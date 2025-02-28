@@ -1,0 +1,68 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "微软雅黑, Microsoft Yahei Ul";
+  outline: none; /*输入框外边框*/
+}
+html,
+body {
+  font-size: 14px;
+}
+ul,
+ol {
+  list-style: none;
+}
+input {
+  width: 280px;
+  height: 35px;
+  line-height: 35px;
+  padding: 5px;
+  border: 1px solid #dcdcdc;
+  outline: none;
+}
+/* 去除input 为number时的上下箭头 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+a {
+  text-decoration: none; /*不要下划线*/
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: none;
+  background: #ccc;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: none;
+  border-radius: 5px;
+  background: transparent;
+}
+
+.overall_width {
+  width: 100%;
+  float: left;
+}
+.overall_width::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* 定义内部宽度 */
+.center_box {
+  width: 1200px;
+  margin: 0 auto;
+}

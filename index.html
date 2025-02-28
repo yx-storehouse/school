@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件技术学院 - 院长信箱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            min-height: 500px;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input {
+            width: 250px;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        .form-group textarea {
+            width: 100%;
+            max-width: 500px;
+            height: 120px;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        .required {
+            color: red;
+        }
+        
+        .note {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .btn-submit {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            cursor: pointer;
+            width: 250px;
+            font-size: 16px;
+        }
+        
+        .footer {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .footer p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../../images/msgBg.jpg" alt="" style="width: 100%;">
+        </div>
+        
+        <div class="content">
+            <p>尊敬的来信人，您好！</p>
+            
+            <p>"网上院长信箱"是学院领导与师生互动交流的渠道，是对地域限制的有效突破心的联系桥梁。学院设立了"院长信箱"、"院系信箱"（以下简称"信箱"），为了使"信箱"能更好地发挥作用，请先仔细阅读并注意以下几点：</p>
+            
+            <ol>
+                <li>学校欢迎广大师生经正规渠道反映对学院工作的意见、各单位工作人员的意见与建议都应该实名和联系方式。</li>
+                <li>来信件需要署真实姓名与联系电话与邮箱，以便于答复与查询。</li>
+                <li>请权限考虑所反映的事实，就事论事反映问题与提供建议与改进意见，以便合理的对事件有针对性的处理。</li>
+                <li>来信内容需认真填写并可附相关材料，主题与意见须表达明确方式，以便合理的对事件处理。</li>
+                <li>来信内容需客观公正，"信箱"只支持，请勿发表不良的词语或恶意诽谤。</li>
+            </ol>
+            
+            <p>感谢您对学校工作的支持与配合！</p>
+            <p style="text-align: right;">软件技术学院</p>
+            
+            <form>
+                <div class="form-group">
+                    <label for="phone">手机号 <span class="required">*</span></label>
+                    <input type="text" id="phone" name="phone" required>
+                    <div class="note">用户名不可省略，请填写输入</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>我的验证码 <span onclick="refreshCaptcha()" style="cursor: pointer; color: blue;">点击刷新验证码</span></label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="captcha">验证码 <span class="required">*</span></label>
+                    <input type="text" id="captcha" name="captcha" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">留言</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                
+                <div class="form-group" style="text-align: center;">
+                    <button type="submit" class="btn-submit">提交</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <p>©版权所有</p>
+            <p>咨询学院: 400-888-8888 | 邮编:610000</p>
+            <p>学校地址: 170xxxx号 | 公司营业号:xxxxxxxxxxxxxxxx号</p>
+        </div>
+    </div>
+
+    <script>
+        function refreshCaptcha() {
+            alert("验证码已刷新");
+            // 在实际应用中，这里应该调用后端API获取新的验证码
+        }
+    </script>
+</body>
+</html>
