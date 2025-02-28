@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,11 @@
             box-sizing: border-box;
             font-family: "Microsoft YaHei", sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
@@ -23,60 +24,69 @@
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .content {
             background-color: white;
             padding: 20px;
             min-height: 500px;
         }
-        
+
         .content p {
             margin-bottom: 15px;
             line-height: 1.6;
         }
-        
+
         .content ol {
             margin-left: 20px;
             margin-bottom: 15px;
         }
-        
+
         .content li {
             margin-bottom: 10px;
             line-height: 1.6;
         }
-        
+
         .form-group {
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            /* Prevent label text from wrapping */
         }
-        
+
         .form-group label {
-            display: block;
-            margin-bottom: 5px;
+            margin-right: 10px;
+            width: 120px;
+            text-align: left;
+            /* Ensure text aligns to the left */
+            white-space: nowrap;
+            /* Prevent wrapping */
         }
-        
-        .form-group input {
+
+        .form-group input,
+        .form-group textarea {
             width: 250px;
             padding: 8px;
             border: 1px solid #ccc;
         }
-        
+
         .form-group textarea {
             width: 100%;
             max-width: 500px;
             height: 120px;
-            padding: 8px;
-            border: 1px solid #ccc;
         }
-        
+
         .required {
             color: red;
         }
-        
+
         .note {
             color: red;
             font-size: 12px;
             margin-top: 5px;
+            height: 50px;
         }
-        
+
         .btn-submit {
             background-color: #2ecc71;
             color: white;
@@ -86,7 +96,7 @@
             width: 250px;
             font-size: 16px;
         }
-        
+
         .footer {
             background-color: #2ecc71;
             color: white;
@@ -94,23 +104,50 @@
             text-align: center;
             font-size: 14px;
         }
-        
+
         .footer p {
             margin-bottom: 5px;
         }
+
+        /* Center the submit button */
+        .form-group-submit {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .refresh-captcha {
+            border: 1px solid #373535;
+            /* 灰色边框 */
+            background-color: #ccc;
+            /* 背景颜色设置为灰色 */
+            color: white;
+            /* 文字颜色设置为白色 */
+            padding: 2px 6px;
+            /* 内边距，让文字与边框之间有一定的空间 */
+            border-radius: 4px;
+            /* 圆角边框 */
+            margin-left: 10px;
+            /* 与前面的文字保持一定的间距 */
+            margin-left: 45px;
+        }
+        
+
+        
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <img src="../../images/msgBg.jpg" alt="" style="width: 100%;">
+            <img src="images/msgBg.jpg" alt="" style="width: 100%;">
         </div>
-        
+
         <div class="content">
             <p>尊敬的来信人，您好！</p>
-            
+
             <p>"网上院长信箱"是学院领导与师生互动交流的渠道，是对地域限制的有效突破心的联系桥梁。学院设立了"院长信箱"、"院系信箱"（以下简称"信箱"），为了使"信箱"能更好地发挥作用，请先仔细阅读并注意以下几点：</p>
-            
+
             <ol>
                 <li>学校欢迎广大师生经正规渠道反映对学院工作的意见、各单位工作人员的意见与建议都应该实名和联系方式。</li>
                 <li>来信件需要署真实姓名与联系电话与邮箱，以便于答复与查询。</li>
@@ -118,37 +155,40 @@
                 <li>来信内容需认真填写并可附相关材料，主题与意见须表达明确方式，以便合理的对事件处理。</li>
                 <li>来信内容需客观公正，"信箱"只支持，请勿发表不良的词语或恶意诽谤。</li>
             </ol>
-            
+
             <p>感谢您对学校工作的支持与配合！</p>
             <p style="text-align: right;">软件技术学院</p>
-            
+
             <form>
                 <div class="form-group">
                     <label for="phone">手机号 <span class="required">*</span></label>
                     <input type="text" id="phone" name="phone" required>
-                    <div class="note">用户名不可省略，请填写输入</div>
+                    
                 </div>
-                
+
+                <div class="note">用户名不可省略，请填写输入</div>
+
                 <div class="form-group">
-                    <label>我的验证码 <span onclick="refreshCaptcha()" style="cursor: pointer; color: blue;">点击刷新验证码</span></label>
+                    <label class="label-refresh">我的验证码 <span class="refresh-captcha" onclick="refreshCaptcha()" style="cursor: pointer;">点击刷新验证码</span></label>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="captcha">验证码 <span class="required">*</span></label>
                     <input type="text" id="captcha" name="captcha" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="message">留言</label>
                     <textarea id="message" name="message"></textarea>
                 </div>
-                
-                <div class="form-group" style="text-align: center;">
+
+                <!-- Centering the submit button -->
+                <div class="form-group-submit">
                     <button type="submit" class="btn-submit">提交</button>
                 </div>
             </form>
         </div>
-        
+
         <div class="footer">
             <p>©版权所有</p>
             <p>咨询学院: 400-888-8888 | 邮编:610000</p>
@@ -163,4 +203,5 @@
         }
     </script>
 </body>
+
 </html>
