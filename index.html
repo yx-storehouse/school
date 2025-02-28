@@ -95,6 +95,11 @@
             cursor: pointer;
             width: 250px;
             font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:active {
+            background-color: #2730ae; /* Darker green when clicked */
         }
 
         .footer {
@@ -118,22 +123,20 @@
 
         .refresh-captcha {
             border: 1px solid #373535;
-            /* 灰色边框 */
             background-color: #ccc;
-            /* 背景颜色设置为灰色 */
             color: white;
-            /* 文字颜色设置为白色 */
             padding: 2px 6px;
-            /* 内边距，让文字与边框之间有一定的空间 */
             border-radius: 4px;
-            /* 圆角边框 */
             margin-left: 10px;
-            /* 与前面的文字保持一定的间距 */
-            margin-left: 45px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left:45px
         }
-        
 
-        
+        .refresh-captcha:active {
+            background-color: #bc1515;
+            
+        }
     </style>
 </head>
 
@@ -169,7 +172,7 @@
                 <div class="note">用户名不可省略，请填写输入</div>
 
                 <div class="form-group">
-                    <label class="label-refresh">我的验证码 <span class="refresh-captcha" onclick="refreshCaptcha()" style="cursor: pointer;">点击刷新验证码</span></label>
+                    <label class="label-refresh">我的验证码 <span class="refresh-captcha" onclick="refreshCaptcha()">点击刷新验证码</span></label>
                 </div>
 
                 <div class="form-group">
@@ -182,7 +185,7 @@
                     <textarea id="message" name="message"></textarea>
                 </div>
 
-                <!-- Centering the submit button -->
+              
                 <div class="form-group-submit">
                     <button type="submit" class="btn-submit">提交</button>
                 </div>
