@@ -49,25 +49,31 @@
         .form-group {
             margin-bottom: 15px;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             flex-wrap: nowrap;
-            /* Prevent label text from wrapping */
         }
 
         .form-group label {
             margin-right: 10px;
             width: 120px;
             text-align: left;
-            /* Ensure text aligns to the left */
             white-space: nowrap;
-            /* Prevent wrapping */
+
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input {
             width: 250px;
             padding: 8px;
             border: 1px solid #ccc;
+            height: 30px;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            max-width: 500px;
+            height: 120px;
+            align-self: flex-end;
+            /* 使留言框与标签底部对齐 */
         }
 
         .form-group textarea {
@@ -99,22 +105,24 @@
         }
 
         .btn-submit:active {
-            background-color: #2730ae; /* Darker green when clicked */
+            background-color: #2730ae;
+
         }
 
         .footer {
             background-color: #2ecc71;
-            color: white;
+            color: rgb(0, 0, 0);
             padding: 15px;
             text-align: center;
             font-size: 14px;
+            font-weight: bold;
         }
 
         .footer p {
             margin-bottom: 5px;
         }
 
-        /* Center the submit button */
+
         .form-group-submit {
             display: flex;
             justify-content: center;
@@ -130,12 +138,21 @@
             margin-left: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-left:45px
+            margin-left: 45px
         }
 
         .refresh-captcha:active {
             background-color: #bc1515;
-            
+
+        }
+
+        .welcome-text {
+            font-size: 28px;
+            /* 增大字体大小 */
+            font-weight: bold;
+            /* 加粗字体 */
+            margin-bottom: 10px;
+            /* 与下方内容的间距 */
         }
     </style>
 </head>
@@ -147,7 +164,7 @@
         </div>
 
         <div class="content">
-            <p>尊敬的来信人，您好！</p>
+            <p class="welcome-text">尊敬的来信人，您好！</p>
 
             <p>"网上院长信箱"是学院领导与师生互动交流的渠道，是对地域限制的有效突破心的联系桥梁。学院设立了"院长信箱"、"院系信箱"（以下简称"信箱"），为了使"信箱"能更好地发挥作用，请先仔细阅读并注意以下几点：</p>
 
@@ -166,13 +183,14 @@
                 <div class="form-group">
                     <label for="phone">手机号 <span class="required">*</span></label>
                     <input type="text" id="phone" name="phone" required>
-                    
+
                 </div>
 
                 <div class="note">用户名不可省略，请填写输入</div>
 
                 <div class="form-group">
-                    <label class="label-refresh">我的验证码 <span class="refresh-captcha" onclick="refreshCaptcha()">点击刷新验证码</span></label>
+                    <label class="label-refresh">我的验证码 <span class="refresh-captcha"
+                            onclick="refreshCaptcha()">点击刷新验证码</span></label>
                 </div>
 
                 <div class="form-group">
@@ -185,7 +203,7 @@
                     <textarea id="message" name="message"></textarea>
                 </div>
 
-              
+
                 <div class="form-group-submit">
                     <button type="submit" class="btn-submit">提交</button>
                 </div>
@@ -200,10 +218,10 @@
     </div>
 
     <script>
-        function refreshCaptcha() {
-            alert("验证码已刷新");
-            // 在实际应用中，这里应该调用后端API获取新的验证码
-        }
+        // function refreshCaptcha() {
+        //     alert("验证码已刷新");
+        //     // 在实际应用中，这里应该调用后端API获取新的验证码
+        // }
     </script>
 </body>
 
