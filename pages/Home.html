@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数传技术学院</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* 顶部信息栏 */
+        .top-bar {
+            background-color: #f8f8f8;
+            padding: 5px 0;
+            font-size: 12px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* 头部区域 */
+        .header {
+            background-color: #fff;
+            padding: 15px 0;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: #006633;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .search-box {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .search-box input {
+            padding: 8px 12px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+        
+        .search-box button {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        
+        /* 导航菜单 */
+        .nav {
+            background-color: #006633;
+        }
+        
+        .nav ul {
+            display: flex;
+            height: 50px;
+        }
+        
+        .nav li {
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav li:hover {
+            background-color: #005528;
+        }
+        
+        /* 轮播图 */
+        .banner {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .banner-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+        
+        .arrow {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .dot.active {
+            background-color: #006633;
+        }
+        
+        /* 快速链接 */
+        .quick-links {
+            background-color: #006633;
+            padding: 15px 0;
+        }
+        
+        .quick-links .container {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .quick-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        
+        .quick-link i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        /* 新闻区域 */
+        .news-section {
+            padding: 30px 0;
+            background-color: #fff;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            height: 20px;
+            width: 5px;
+            background-color: #006633;
+        }
+        
+        .more {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .news-item {
+            width: 100%;
+            padding: 0 15px;
+            margin-bottom: 20px;
+            display: flex;
+        }
+        
+        .news-img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .news-content {
+            flex: 1;
+        }
+        
+        .news-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .news-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .news-date {
+            width: 80px;
+            height: 80px;
+            background-color: #006633;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+        }
+        
+        .date-day {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .date-month {
+            font-size: 14px;
+        }
+        
+        /* 按钮区域 */
+        .btn-section {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            padding: 10px 30px;
+            margin: 0 10px;
+            background-color: #006633;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #005528;
+        }
+        
+        /* 教师风采 */
+        .teacher-section {
+            padding: 30px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .teacher-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .teacher-card {
+            width: 30%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .teacher-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .teacher-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .teacher-title {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .teacher-info {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* 学院风采 */
+        .campus-section {
+            padding: 30px 0;
+            background-color: #fff;
+        }
+        
+        .campus-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .campus-title h2 {
+            font-size: 24px;
+            color: #333;
+            display: inline-block;
+            padding: 0 20px;
+            background-color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .campus-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            z-index: 0;
+        }
+        
+        .campus-gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-item {
+            width: 25%;
+            height: 150px;
+            padding: 5px;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: #006633;
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .footer-container {
+            display: flex;
+        }
+        
+        .footer-col {
+            flex: 1;
+            padding: 0 15px;
+        }
+        
+        .footer-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-content {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部信息栏 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="welcome">欢迎 | 登入/注册</div>
+            <div class="date">今天是: 2022-1-3 12:00:00</div>
+        </div>
+    </div>
+    
+    <!-- 头部区域 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/placeholder.svg?height=60&width=60" alt="数传技术学院logo">
+                <h1>数传技术学院</h1>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="输入关键字搜索">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 导航菜单 -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">机构设置</a></li>
+                <li><a href="#">教师队伍</a></li>
+                <li><a href="#">新闻资讯</a></li>
+                <li><a href="#">合作交流</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 轮播图 -->
+    <div class="banner">
+        <img src="/placeholder.svg?height=400&width=1200" alt="在线教育" class="banner-img">
+        <div class="banner-arrows">
+            <div class="arrow">&#10094;</div>
+            <div class="arrow">&#10095;</div>
+        </div>
+        <div class="banner-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+    
+    <!-- 快速链接 -->
+    <div class="quick-links">
+        <div class="container">
+            <div class="quick-link">
+                <i>📚</i>
+                <span>学校概况</span>
+            </div>
+            <div class="quick-link">
+                <i>📱</i>
+                <span>电子邮箱</span>
+            </div>
+            <div class="quick-link">
+                <i>📝</i>
+                <span>教学资料下载</span>
+            </div>
+            <div class="quick-link">
+                <i>🔍</i>
+                <span>数据查询</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 新闻区域 -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">学院新闻</h2>
+                <a href="#" class="more">更多 &gt;</a>
+            </div>
+            <div class="news-container">
+                <div class="news-item">
+                    <img src="/placeholder.svg?height=80&width=120" alt="新闻图片" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">信阳城市学院数传学院院系力行"第三课堂"...</h3>
+                        <p class="news-desc">信阳城市学院数传学院"乐创树"工作室是学院在第一课堂学习基础上开设的第三课堂，旨在培养学生的创新精神和实践能力。</p>
+                    </div>
+                    <div class="news-date">
+                        <div class="date-day">31</div>
+                        <div class="date-month">2021-12</div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <img src="/placeholder.svg?height=80&width=120" alt="新闻图片" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">信阳城市学院数传学院（软件学院）首届程序...</h3>
+                        <p class="news-desc">为激发学生对编程的兴趣，培养学生的创新思维和实践能力，信阳城市学院数传学院（软件学院）举办了首届程序设计大赛。</p>
+                    </div>
+                    <div class="news-date">
+                        <div class="date-day">31</div>
+                        <div class="date-month">2021-12</div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <img src="/placeholder.svg?height=80&width=120" alt="新闻图片" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">信阳川汇软件互联网学院数据技术2020-2021...</h3>
+                        <p class="news-desc">2021年12月31日，信阳川汇软件互联网学院数据技术2020-2021学年度工作总结大会在学院报告厅举行，总结了过去一年的工作成果。</p>
+                    </div>
+                    <div class="news-date">
+                        <div class="date-day">31</div>
+                        <div class="date-month">2021-12</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 招生信息 -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">招生信息</h2>
+                <a href="#" class="more">更多 &gt;</a>
+            </div>
+            <div class="news-container">
+                <div class="news-item">
+                    <img src="/placeholder.svg?height=80&width=120" alt="招生信息图片" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">学院招聘（在"聘"上下功夫，在"行"上见真章——五联动四举措推进高层次人才引进工作）</h3>
+                        <p class="news-desc">学院高度重视人才引进工作，采取五联动四举措，全面推进高层次人才引进工作，为学院发展提供人才支撑。</p>
+                    </div>
+                    <div class="news-date">
+                        <div class="date-day">31</div>
+                        <div class="date-month">2021-12</div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <img src="/placeholder.svg?height=80&width=120" alt="招生信息图片" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">川汇中坚人才工程师范类第二批学生赴实践基地见习</h3>
+                        <p class="news-desc">为加强师范生实践能力培养，川汇中坚人才工程师范类第二批学生赴合作学校进行为期两周的教育见习活动。</p>
+                    </div>
+                    <div class="news-date">
+                        <div class="date-day">31</div>
+                        <div class="date-month">2021-12</div>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <img src="/placeholder.svg?height=80&width=120" alt="招生信息图片" class="news-img">
+                    <div class="news-content">
+                        <h3 class="news-title">招聘信息广泛宣传媒体化学院院校对接建立产业学院</h3>
+                        <p class="news-desc">学院积极与企业合作，建立产业学院，推进校企深度融合，培养适应产业发展需求的应用型人才。</p>
+                    </div>
+                    <div class="news-date">
+                        <div class="date-day">31</div>
+                        <div class="date-month">2021-12</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 按钮区域 -->
+    <div class="btn-section">
+        <button class="btn">优秀教师</button>
+        <button class="btn">优秀学生</button>
+    </div>
+    
+    <!-- 教师风采 -->
+    <section class="teacher-section">
+        <div class="container">
+            <div class="teacher-container">
+                <div class="teacher-card">
+                    <img src="/placeholder.svg?height=200&width=300" alt="张教授" class="teacher-img">
+                    <h3 class="teacher-name">张德霞 <span>(博士)</span></h3>
+                    <p class="teacher-title">学科：数据通信系统设计</p>
+                    <p class="teacher-info">
+                        职位：数传学院院长<br>
+                        电子学与通信工学博士<br>
+                        工程学教授
+                    </p>
+                </div>
+                <div class="teacher-card">
+                    <img src="/placeholder.svg?height=200&width=300" alt="李教授" class="teacher-img">
+                    <h3 class="teacher-name">李丽沙 <span>(硕士)</span></h3>
+                    <p class="teacher-title">学科：计算机网络与通信</p>
+                    <p class="teacher-info">
+                        职位：软件学院副院长<br>
+                        教授
+                    </p>
+                </div>
+                <div class="teacher-card">
+                    <img src="/placeholder.svg?height=200&width=300" alt="刘教授" class="teacher-img">
+                    <h3 class="teacher-name">刘诚 <span>(教授)</span></h3>
+                    <p class="teacher-title">学科：数据挖掘</p>
+                    <p class="teacher-info">
+                        职位：数据科学研究所所长<br>
+                        教授
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 学院风采 -->
+    <section class="campus-section">
+        <div class="container">
+            <div class="campus-title">
+                <h2>学院风采</h2>
+            </div>
+            <div class="campus-gallery">
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=150&width=300" alt="校园风光" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3 class="footer-title">联系我们</h3>
+                    <div class="footer-content">
+                        电话号码: 400-888-8888 | 招生电话: 10000<br>
+                        学校地址: 170xxxx省 x市xx区 xxxxxxxxxxxxxxx号<br>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">教务处</h3>
+                    <div class="footer-content">
+                        信息中心<br>
+                        VR体验<br>
+                        网络管理部
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">招生生涯</h3>
+                    <div class="footer-content">
+                        招生办<br>
+                        就业办<br>
+                        QA系统
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 中文 | 英文 | 日文 | 韩文
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

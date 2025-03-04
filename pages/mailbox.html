@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件技术学院 - 院长信箱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            min-height: 500px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+        }
+
+        .form-group label {
+            margin-right: 10px;
+            width: 120px;
+            text-align: left;
+            white-space: nowrap;
+            padding-top: 8px;
+        }
+
+        .form-control {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        .required {
+            color: red;
+        }
+
+        .note {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            height: auto;
+        }
+
+        .btn-submit {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            cursor: pointer;
+            width: 250px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .btn-submit:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-submit.loading {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .btn-submit.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #fff;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .footer {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        /* Center the submit button */
+        .form-group-submit {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* 添加输入框焦点动画 */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2ecc71;
+            box-shadow: 0 0 5px rgba(46, 204, 113, 0.3);
+        }
+
+        /* 错误状态样式 */
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* 成功提示框样式 */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            display: none;
+            animation: slideIn 0.5s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* 验证码样式 */
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .captcha-image {
+            height: 40px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #333;
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+            width: 120px;
+        }
+
+        .captcha-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.5) 50%, transparent 55%);
+            background-size: 200% 200%;
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .refresh-captcha {
+            border: none;
+            background-color: #3498db;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .refresh-captcha:hover {
+            background-color: #2980b9;
+        }
+
+        /* 用户名字段 */
+        .form-group.username {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../images/msgBg.jpg" alt="" style="width: 100%;">
+        </div>
+
+        <div class="content">
+            <p>尊敬的来信人，您好！</p>
+
+            <p>"网上院长信箱"是学院领导与师生互动交流的渠道，是对地域限制的有效突破心的联系桥梁。学院设立了"院长信箱"、"院系信箱"（以下简称"信箱"），为了使"信箱"能更好地发挥作用，请先仔细阅读并注意以下几点：</p>
+
+            <ol>
+                <li>学校欢迎广大师生经正规渠道反映对学院工作的意见、各单位工作人员的意见与建议都应该实名和联系方式。</li>
+                <li>来信件需要署真实姓名与联系电话与邮箱，以便于答复与查询。</li>
+                <li>请权限考虑所反映的事实，就事论事反映问题与提供建议与改进意见，以便合理的对事件有针对性的处理。</li>
+                <li>来信内容需认真填写并可附相关材料，主题与意见须表达明确方式，以便合理的对事件处理。</li>
+                <li>来信内容需客观公正，"信箱"只支持，请勿发表不良的词语或恶意诽谤。</li>
+            </ol>
+
+            <p>感谢您对学���工作的支持与配合！</p>
+            <p style="text-align: right;">软件技术学院</p>
+
+            <form id="messageForm" onsubmit="return validateForm(event)">
+                <div class="form-group username">
+                    <label for="username">姓名 <span class="required">*</span></label>
+                    <div class="form-control">
+                        <input type="text" id="username" name="username" required>
+                        <div class="error-message" id="username-error">请输入您的姓名</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">手机号 <span class="required">*</span></label>
+                    <div class="form-control">
+                        <input type="text" id="phone" name="phone" required>
+                        <div class="error-message" id="phone-error">请输入正确的手机号码</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">邮箱 <span class="required">*</span></label>
+                    <div class="form-control">
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="email-error">请输入正确的邮箱地址</div>
+                    </div>
+                </div>
+
+                <div class="note" id="userInfoNote" style="display: none;">
+                    用户信息不可省略，请完整填写以便我们及时回复您的留言
+                </div>
+
+                <div class="form-group">
+                    <label for="captcha">验证码 <span class="required">*</span></label>
+                    <div class="form-control">
+                        <div class="captcha-container">
+                            <div class="captcha-image" id="captchaImage"></div>
+                            <button type="button" class="refresh-captcha" onclick="refreshCaptcha()">刷新验证码</button>
+                        </div>
+                        <input type="text" id="captcha" name="captcha" required>
+                        <div class="error-message" id="captcha-error">请输入正确的验证码</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">留言内容 <span class="required">*</span></label>
+                    <div class="form-control">
+                        <textarea id="message" name="message" required></textarea>
+                        <div class="error-message" id="message-error">请输入留言内容</div>
+                    </div>
+                </div>
+
+                <!-- Centering the submit button -->
+                <div class="form-group-submit">
+                    <button type="submit" class="btn-submit" id="submitBtn">提交</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>©版权所有</p>
+            <p>咨询学院: 400-888-8888 | 邮编:610000</p>
+            <p>学校地址: 170xxxx号 | 公司营业号:xxxxxxxxxxxxxxxx号</p>
+        </div>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        提交成功！我们会尽快处理您的留言。
+    </div>
+
+    <script>
+        // 全局变量存储验证码
+        let captchaCode = '';
+        
+        // 页面加载时生成验证码
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshCaptcha();
+        });
+        
+        // 生成随机验证码
+        function generateCaptcha() {
+            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let code = '';
+            for (let i = 0; i < 4; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        // 刷新验证码
+        function refreshCaptcha() {
+            captchaCode = generateCaptcha();
+            const captchaImage = document.getElementById('captchaImage');
+            
+            // 随机背景色
+            const r = Math.floor(Math.random() * 60) + 180;
+            const g = Math.floor(Math.random() * 60) + 180;
+            const b = Math.floor(Math.random() * 60) + 180;
+            
+            captchaImage.style.backgroundColor = `rgb(${r},${g},${b})`;
+            
+            // 添加干扰线
+            captchaImage.innerHTML = '';
+            
+            // 显示验证码文字
+            const textSpan = document.createElement('span');
+            textSpan.textContent = captchaCode;
+            textSpan.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+            captchaImage.appendChild(textSpan);
+            
+            // 清空验证码输入框
+            document.getElementById('captcha').value = '';
+        }
+        
+        // 表单验证
+        function validateForm(event) {
+            event.preventDefault();
+            
+            // 获取表单元素
+            const form = document.getElementById('messageForm');
+            const username = document.getElementById('username');
+            const phone = document.getElementById('phone');
+            const email = document.getElementById('email');
+            const captcha = document.getElementById('captcha');
+            const message = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // 重置错误状态
+            resetErrors();
+            
+            let isValid = true;
+            
+            // 验证姓名
+            if (!username.value.trim()) {
+                showError(username, '请输入您的姓名');
+                isValid = false;
+            }
+            
+            // 验证手机号 - 中国大陆手机号验证
+            const phoneRegex = /^1(3\d|4[5-9]|5[0-35-9]|6[2567]|7[0-8]|8\d|9[0-35-9])\d{8}$/;
+            if (!phoneRegex.test(phone.value)) {
+                showError(phone, '请输入正确的中国大陆11位手机号码');
+                isValid = false;
+            }
+            
+            // 验证邮箱
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                showError(email, '请输入正确的邮箱地址');
+                isValid = false;
+            }
+            
+            // 验证验证码
+            if (captcha.value.toUpperCase() !== captchaCode) {
+                showError(captcha, '验证码不正确，请重新输入');
+                isValid = false;
+            }
+            
+            // 验证留言内容
+            if (!message.value.trim()) {
+                showError(message, '请输入留言内容');
+                isValid = false;
+            } else if (message.value.trim().length < 10) {
+                showError(message, '留言内容至少需要10个字符');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return false;
+            }
+            
+            // 显示提交动画
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            
+            // 模拟提交过程
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                
+                // 显示成功消息
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+                
+                // 3秒后隐藏成功消息
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+                
+                // 清空表单
+                form.reset();
+                
+                // 刷新验证码
+                refreshCaptcha();
+            }, 1500);
+            
+            return false;
+        }
+        
+        // 显示错误信息
+        function showError(input, message) {
+            const formGroup = input.closest('.form-group');
+            formGroup.classList.add('error');
+            
+            const errorId = input.id + '-error';
+            const errorMessage = document.getElementById(errorId);
+            if (errorMessage) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+            }
+            
+            // 如果是用户信息相关的字段（用户名、手机号、邮箱）出错，显示提示信息
+            if (['username', 'phone', 'email'].includes(input.id)) {
+                document.getElementById('userInfoNote').style.display = 'block';
+            }
+            
+            // 聚焦到第一个错误输入框
+            if (!document.querySelector('.form-group.error input:focus, .form-group.error textarea:focus')) {
+                input.focus();
+            }
+        }
+        
+        // 重置所有错误信息
+        function resetErrors() {
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                group.classList.remove('error');
+                const errorMessage = group.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.style.display = 'none';
+                }
+            });
+            // 隐藏用户信息提示
+            document.getElementById('userInfoNote').style.display = 'none';
+        }
+        
+        // 实时验证
+        document.querySelectorAll('#messageForm input, #messageForm textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                const formGroup = this.closest('.form-group');
+                if (formGroup.classList.contains('error')) {
+                    const errorMessage = formGroup.querySelector('.error-message');
+                    formGroup.classList.remove('error');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+                    
+                    // 检查是否还有其他用户信息字段的错误
+                    if (['username', 'phone', 'email'].includes(this.id)) {
+                        const hasOtherUserInfoErrors = ['username', 'phone', 'email'].some(id => {
+                            const element = document.getElementById(id);
+                            return element && element !== this && element.closest('.form-group').classList.contains('error');
+                        });
+                        if (!hasOtherUserInfoErrors) {
+                            document.getElementById('userInfoNote').style.display = 'none';
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
