@@ -125,6 +125,24 @@
             overflow: hidden;
         }
         
+        .banner-slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .banner-slide.active {
+            opacity: 1;
+        }
+        
         .banner-img {
             width: 100%;
             height: 100%;
@@ -139,6 +157,7 @@
             justify-content: space-between;
             transform: translateY(-50%);
             padding: 0 20px;
+            z-index: 10;
         }
         
         .arrow {
@@ -152,6 +171,11 @@
             justify-content: center;
             cursor: pointer;
             font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.5);
         }
         
         .banner-dots {
@@ -160,6 +184,7 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
+            z-index: 10;
         }
         
         .dot {
@@ -169,6 +194,7 @@
             border-radius: 50%;
             margin: 0 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         
         .dot.active {
@@ -203,103 +229,110 @@
             padding: 30px 0;
             background-color: #fff;
         }
-        
+
+        .news-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .news-column {
+            flex: 1;
+        }
+
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
         }
-        
+
         .section-title {
             font-size: 20px;
             font-weight: bold;
             color: #333;
-            position: relative;
-            padding-left: 15px;
         }
-        
-        .section-title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 5px;
-            height: 20px;
-            width: 5px;
-            background-color: #006633;
-        }
-        
+
         .more {
-            color: #999;
+            color: #006633;
             font-size: 14px;
         }
-        
-        .news-container {
+
+        .news-list {
             display: flex;
-            flex-wrap: wrap;
-            margin: 0 -15px;
+            flex-direction: column;
+            gap: 20px;
         }
-        
+
         .news-item {
-            width: 100%;
-            padding: 0 15px;
-            margin-bottom: 20px;
             display: flex;
+            gap: 15px;
         }
-        
+
+        .news-item.with-image {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
         .news-img {
-            width: 120px;
-            height: 80px;
+            width: 180px;
+            height: 120px;
             object-fit: cover;
-            margin-right: 15px;
         }
-        
+
         .news-content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .news-title {
             font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 5px;
             color: #333;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
-        
+
         .news-desc {
             font-size: 14px;
             color: #666;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
-        
-        .news-date {
-            width: 80px;
-            height: 80px;
+
+        .news-date-small {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .admission-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            height: 150px;
+        }
+
+        .date-box {
+            width: 60px;
+            height: 60px;
             background-color: #006633;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-left: 15px;
+            flex-shrink: 0;
         }
-        
+
         .date-day {
             font-size: 24px;
             font-weight: bold;
+            line-height: 1;
         }
-        
+
         .date-month {
-            font-size: 14px;
+            font-size: 12px;
+            margin-top: 4px;
         }
         
         /* 按钮区域 */
@@ -421,37 +454,76 @@
         .footer {
             background-color: #006633;
             color: white;
-            padding: 30px 0;
+            padding: 20px 0;
         }
-        
+
         .footer-container {
             display: flex;
-        }
-        
-        .footer-col {
-            flex: 1;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 15px;
         }
-        
-        .footer-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        
-        .footer-content {
+
+        .footer-school {
             font-size: 14px;
-            line-height: 1.8;
+            margin-bottom: 5px;
         }
-        
-        .copyright {
-            text-align: center;
+
+        .footer-contact {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .language-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .language-options a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .language-options a:hover {
+            color: white;
         }
     </style>
 </head>
@@ -494,17 +566,33 @@
     
     <!-- 轮播图 -->
     <div class="banner">
-        <img src="/placeholder.svg?height=400&width=1200" alt="在线教育" class="banner-img">
+        <div class="banner-slides">
+            <div class="banner-slide active">
+                <img src="/placeholder.svg?height=400&width=1200&text=在线教育1" alt="在线教育1" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="/placeholder.svg?height=400&width=1200&text=在线教育2" alt="在线教育2" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="/placeholder.svg?height=400&width=1200&text=在线教育3" alt="在线教育3" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="/placeholder.svg?height=400&width=1200&text=在线教育4" alt="在线教育4" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="/placeholder.svg?height=400&width=1200&text=在线教育5" alt="在线教育5" class="banner-img">
+            </div>
+        </div>
         <div class="banner-arrows">
-            <div class="arrow">&#10094;</div>
-            <div class="arrow">&#10095;</div>
+            <div class="arrow" id="prev-slide">&#10094;</div>
+            <div class="arrow" id="next-slide">&#10095;</div>
         </div>
         <div class="banner-dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
         </div>
     </div>
     
@@ -530,90 +618,78 @@
         </div>
     </div>
     
-    <!-- 新闻区域 -->
+    <!-- 新闻和招生信息区域 -->
     <section class="news-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">学院新闻</h2>
-                <a href="#" class="more">更多 &gt;</a>
-            </div>
             <div class="news-container">
-                <div class="news-item">
-                    <img src="/placeholder.svg?height=80&width=120" alt="新闻图片" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">信阳城市学院数传学院院系力行"第三课堂"...</h3>
-                        <p class="news-desc">信阳城市学院数传学院"乐创树"工作室是学院在第一课堂学习基础上开设的第三课堂，旨在培养学生的创新精神和实践能力。</p>
+                <!-- 学院新闻 -->
+                <div class="news-column">
+                    <div class="section-header">
+                        <h2 class="section-title">学院新闻</h2>
+                        <a href="#" class="more">更多 ></a>
                     </div>
-                    <div class="news-date">
-                        <div class="date-day">31</div>
-                        <div class="date-month">2021-12</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="/placeholder.svg?height=80&width=120" alt="新闻图片" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">信阳城市学院数传学院（软件学院）首届程序...</h3>
-                        <p class="news-desc">为激发学生对编程的兴趣，培养学生的创新思维和实践能力，信阳城市学院数传学院（软件学院）举办了首届程序设计大赛。</p>
-                    </div>
-                    <div class="news-date">
-                        <div class="date-day">31</div>
-                        <div class="date-month">2021-12</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="/placeholder.svg?height=80&width=120" alt="新闻图片" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">信阳川汇软件互联网学院数据技术2020-2021...</h3>
-                        <p class="news-desc">2021年12月31日，信阳川汇软件互联网学院数据技术2020-2021学年度工作总结大会在学院报告厅举行，总结了过去一年的工作成果。</p>
-                    </div>
-                    <div class="news-date">
-                        <div class="date-day">31</div>
-                        <div class="date-month">2021-12</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 招生信息 -->
-    <section class="news-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">招生信息</h2>
-                <a href="#" class="more">更多 &gt;</a>
-            </div>
-            <div class="news-container">
-                <div class="news-item">
-                    <img src="/placeholder.svg?height=80&width=120" alt="招生信息图片" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">学院招聘（在"聘"上下功夫，在"行"上见真章——五联动四举措推进高层次人才引进工作）</h3>
-                        <p class="news-desc">学院高度重视人才引进工作，采取五联动四举措，全面推进高层次人才引进工作，为学院发展提供人才支撑。</p>
-                    </div>
-                    <div class="news-date">
-                        <div class="date-day">31</div>
-                        <div class="date-month">2021-12</div>
+                    <div class="news-list">
+                        <div class="news-item with-image">
+                            <img src="/placeholder.svg?height=120&width=180" alt="城市风光" class="news-img">
+                            <div class="news-content">
+                                <h3 class="news-title">信阳城市学院数传学院院系力行"第三课堂"...</h3>
+                                <p class="news-desc">信阳城市学院数传学院"乐创树"工作室是学院在第一课堂学习基础上开设的第三课堂，旨在培养学生的创新精神和实践能力。</p>
+                                <span class="news-date-small">2021-12-31</span>
+                            </div>
+                        </div>
+                        <div class="news-item with-image">
+                            <img src="/placeholder.svg?height=120&width=180" alt="毕业照片" class="news-img">
+                            <div class="news-content">
+                                <h3 class="news-title">信阳城市学院数传学院（软件学院）首届程序设计大赛圆满结束</h3>
+                                <p class="news-desc">为激发学生对编程的兴趣，培养学生的创新思维和实践能力，信阳城市学院数传学院（软件学院）举办了首届程序设计大赛。</p>
+                                <span class="news-date-small">2021-12-31</span>
+                            </div>
+                        </div>
+                        <div class="news-item with-image">
+                            <img src="/placeholder.svg?height=120&width=180" alt="军训照片" class="news-img">
+                            <div class="news-content">
+                                <h3 class="news-title">信阳川汇软件互联网学院数据技术2020-2021学年度工作总结大会</h3>
+                                <p class="news-desc">2021年12月31日，信阳川汇软件互联网学院数据技术2020-2021学年度工作总结大会在学院报告厅举行。</p>
+                                <span class="news-date-small">2021-12-31</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="news-item">
-                    <img src="/placeholder.svg?height=80&width=120" alt="招生信息图片" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">川汇中坚人才工程师范类第二批学生赴实践基地见习</h3>
-                        <p class="news-desc">为加强师范生实践能力培养，川汇中坚人才工程师范类第二批学生赴合作学校进行为期两周的教育见习活动。</p>
+                
+                <!-- 招生信息 -->
+                <div class="news-column">
+                    <div class="section-header">
+                        <h2 class="section-title">招生信息</h2>
+                        <a href="#" class="more">更多 ></a>
                     </div>
-                    <div class="news-date">
-                        <div class="date-day">31</div>
-                        <div class="date-month">2021-12</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="/placeholder.svg?height=80&width=120" alt="招生信息图片" class="news-img">
-                    <div class="news-content">
-                        <h3 class="news-title">招聘信息广泛宣传媒体化学院院校对接建立产业学院</h3>
-                        <p class="news-desc">学院积极与企业合作，建立产业学院，推进校企深度融合，培养适应产业发展需求的应用型人才。</p>
-                    </div>
-                    <div class="news-date">
-                        <div class="date-day">31</div>
-                        <div class="date-month">2021-12</div>
+                    <div class="news-list">
+                        <div class="admission-item">
+                            <div class="date-box">
+                                <div class="date-day">31</div>
+                                <div class="date-month">2021-12</div>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">学院发展（在"聘"上下功夫，在"行"上见真章——五联动四举措推进高层次人才引进工作）</h3>
+                            </div>
+                        </div>
+                        <div class="admission-item">
+                            <div class="date-box">
+                                <div class="date-day">31</div>
+                                <div class="date-month">2021-12</div>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">川汇中坚人才工程师范类第二批学生赴实践基地见习</h3>
+                            </div>
+                        </div>
+                        <div class="admission-item">
+                            <div class="date-box">
+                                <div class="date-day">31</div>
+                                <div class="date-month">2021-12</div>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">世纪软件与广东文理职业学院院校对接建立产业学院</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -699,36 +775,134 @@
     
     <!-- 页脚 -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3 class="footer-title">联系我们</h3>
-                    <div class="footer-content">
-                        电话号码: 400-888-8888 | 招生电话: 10000<br>
-                        学校地址: 170xxxx省 x市xx区 xxxxxxxxxxxxxxx号<br>
-                    </div>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-school">数传学院</div>
+                <div class="footer-contact">
+                    电话号码：400-888-8888 | 招生电话：10000
                 </div>
-                <div class="footer-col">
-                    <h3 class="footer-title">教务处</h3>
-                    <div class="footer-content">
-                        信息中心<br>
-                        VR体验<br>
-                        网络管理部
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3 class="footer-title">招生生涯</h3>
-                    <div class="footer-content">
-                        招生办<br>
-                        就业办<br>
-                        QA系统
-                    </div>
+                <div class="footer-contact">
+                    学校地址：170xxxx省 x市xx区 xxxxxxxxxxxxxxx号
                 </div>
             </div>
-            <div class="copyright">
-                © 中文 | 英文 | 日文 | 韩文
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">教务处</a>
+                    <a href="#" class="footer-link">信息中心</a>
+                    <a href="#" class="footer-link">VR体验</a>
+                    <a href="#" class="footer-link">网络管理部</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">招生办</a>
+                    <a href="#" class="footer-link">就业办</a>
+                    <a href="#" class="footer-link">QA系统</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="language-options">
+                <a href="#">中文</a>
+                <span>|</span>
+                <a href="#">英文</a>
+                <span>|</span>
+                <a href="#">日文</a>
+                <span>|</span>
+                <a href="#">韩文</a>
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript 轮播图功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取轮播图元素
+            const slides = document.querySelectorAll('.banner-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            
+            // 设置自动轮播的间隔时间（毫秒）
+            const autoSlideInterval = 5000;
+            let autoSlideTimer;
+            
+            // 显示指定索引的幻灯片
+            function showSlide(index) {
+                // 确保索引在有效范围内
+                if (index < 0) {
+                    index = slideCount - 1;
+                } else if (index >= slideCount) {
+                    index = 0;
+                }
+                
+                // 隐藏所有幻灯片并移除所有点的活动状态
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // 显示当前幻灯片并激活对应的点
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                
+                // 更新当前索引
+                currentIndex = index;
+            }
+            
+            // 下一张幻灯片
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+            
+            // 上一张幻灯片
+            function prevSlide() {
+                showSlide(currentIndex - 1);
+            }
+            
+            // 开始自动轮播
+            function startAutoSlide() {
+                stopAutoSlide(); // 先停止之前的定时器
+                autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
+            }
+            
+            // 停止自动轮播
+            function stopAutoSlide() {
+                if (autoSlideTimer) {
+                    clearInterval(autoSlideTimer);
+                }
+            }
+            
+            // 为左右箭头按钮添加点击事件
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                // 点击后重新开始自动轮播
+                startAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                // 点击后重新开始自动轮播
+                startAutoSlide();
+            });
+            
+            // 为指示点添加点击事件
+            dots.forEach(function(dot, index) {
+                dot.addEventListener('click', function() {
+                    showSlide(index);
+                    // 点击后重新开始自动轮播
+                    startAutoSlide();
+                });
+            });
+            
+            // 当鼠标悬停在轮播图上时，停止自动轮播
+            const banner = document.querySelector('.banner');
+            banner.addEventListener('mouseenter', stopAutoSlide);
+            banner.addEventListener('mouseleave', startAutoSlide);
+            
+            // 初始化：显示第一张幻灯片并开始自动轮播
+            showSlide(0);
+            startAutoSlide();
+        });
+    </script>
 </body>
 </html>
