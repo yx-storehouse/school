@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +12,26 @@
             box-sizing: border-box;
             font-family: "Microsoft YaHei", sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         ul {
             list-style: none;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         /* 顶部信息栏 */
         .top-bar {
             background-color: #f8f8f8;
@@ -39,54 +40,54 @@
             color: #666;
             border-bottom: 1px solid #eee;
         }
-        
+
         .top-bar .container {
             display: flex;
             justify-content: space-between;
         }
-        
+
         /* 头部区域 */
         .header {
             background-color: #fff;
             padding: 15px 0;
         }
-        
+
         .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
             height: 60px;
             margin-right: 10px;
         }
-        
+
         .logo h1 {
             color: #006633;
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         .search-box {
             display: flex;
             border: 1px solid #ddd;
             border-radius: 4px;
             overflow: hidden;
         }
-        
+
         .search-box input {
             padding: 8px 12px;
             border: none;
             outline: none;
             width: 200px;
         }
-        
+
         .search-box button {
             background-color: #006633;
             color: white;
@@ -94,17 +95,17 @@
             padding: 8px 15px;
             cursor: pointer;
         }
-        
+
         /* 导航菜单 */
         .nav {
             background-color: #006633;
         }
-        
+
         .nav ul {
             display: flex;
             height: 50px;
         }
-        
+
         .nav li {
             flex: 1;
             text-align: center;
@@ -113,24 +114,24 @@
             font-size: 16px;
             position: relative;
         }
-        
+
         .nav li:hover {
             background-color: #005528;
         }
-        
+
         /* 轮播图 */
         .banner {
             position: relative;
             height: 400px;
             overflow: hidden;
         }
-        
+
         .banner-slides {
             width: 100%;
             height: 100%;
             position: relative;
         }
-        
+
         .banner-slide {
             position: absolute;
             width: 100%;
@@ -138,17 +139,17 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
-        
+
         .banner-slide.active {
             opacity: 1;
         }
-        
+
         .banner-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .banner-arrows {
             position: absolute;
             top: 50%;
@@ -159,7 +160,7 @@
             padding: 0 20px;
             z-index: 10;
         }
-        
+
         .arrow {
             width: 40px;
             height: 40px;
@@ -173,11 +174,11 @@
             font-size: 20px;
             transition: background-color 0.3s;
         }
-        
+
         .arrow:hover {
             background-color: rgba(0, 0, 0, 0.5);
         }
-        
+
         .banner-dots {
             position: absolute;
             bottom: 20px;
@@ -186,7 +187,7 @@
             display: flex;
             z-index: 10;
         }
-        
+
         .dot {
             width: 10px;
             height: 10px;
@@ -196,34 +197,66 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
+
         .dot.active {
             background-color: #006633;
         }
-        
+
         /* 快速链接 */
         .quick-links {
             background-color: #006633;
-            padding: 15px 0;
+            padding: 10px 0;
         }
-        
+
         .quick-links .container {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
+        .notification {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .notification-icon {
+            font-size: 28px;
+            margin-right: 15px;
+        }
+
+        .notification-text {
+            font-size: 14px;
+        }
+
+        .quick-links-icons {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+        }
+
         .quick-link {
             display: flex;
             flex-direction: column;
             align-items: center;
             color: white;
+            padding: 10px 0;
         }
-        
+
         .quick-link i {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
+        .quick-link span {
+            font-size: 14px;
+        }
+
         /* 新闻区域 */
         .news-section {
             padding: 30px 0;
@@ -233,7 +266,7 @@
         .news-container {
             display: flex;
             justify-content: space-between;
-            gap: 30px;
+            gap: 40px;
         }
 
         .news-column {
@@ -245,6 +278,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
         }
 
         .section-title {
@@ -264,57 +299,72 @@
             gap: 20px;
         }
 
+        /* 学院新闻样式 */
         .news-item {
             display: flex;
-            gap: 15px;
-        }
-
-        .news-item.with-image {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
+            gap: 20px;
+            height: 140px;
+            /* 固定高度以确保对齐 */
+            margin-bottom: 20px;
         }
 
         .news-img {
-            width: 180px;
-            height: 120px;
+            width: 220px;
+            height: 140px;
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .news-content {
             flex: 1;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .news-title {
             font-size: 16px;
             color: #333;
-            margin-bottom: 10px;
             line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .news-title:hover {
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         .news-desc {
             font-size: 14px;
             color: #666;
             line-height: 1.6;
-            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .news-date-small {
+        .news-date {
             font-size: 12px;
             color: #999;
+            text-align: right;
+            margin-top: auto;
         }
 
+        /* 招生信息样式 */
         .admission-item {
             display: flex;
-            gap: 15px;
+            gap: 20px;
+            height: 140px;
+            /* 与新闻项目相同的高度 */
             margin-bottom: 20px;
-            height: 150px;
         }
 
         .date-box {
-            width: 60px;
-            height: 60px;
+            width: 140px;
+            /* 与高度相同，形成正方形 */
+            height: 140px;
+            /* 与新闻图片高度相同 */
             background-color: #006633;
             color: white;
             display: flex;
@@ -325,93 +375,142 @@
         }
 
         .date-day {
-            font-size: 24px;
+            font-size: 48px;
             font-weight: bold;
             line-height: 1;
         }
 
         .date-month {
-            font-size: 12px;
-            margin-top: 4px;
+            font-size: 16px;
+            margin-top: 8px;
         }
-        
+
+        .admission-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .admission-title {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .admission-title:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         /* 按钮区域 */
         .btn-section {
             display: flex;
             justify-content: center;
+            gap: 20px;
             margin: 30px 0;
         }
-        
+
         .btn {
-            padding: 10px 30px;
-            margin: 0 10px;
-            background-color: #006633;
-            color: white;
-            border: none;
+            padding: 10px 40px;
+            font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
+
+        .btn-primary {
+            background-color: #006633;
+            color: white;
+            border: 1px solid #006633;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #006633;
+            border: 1px solid #006633;
+        }
+
         .btn:hover {
-            background-color: #005528;
+            opacity: 0.9;
         }
-        
+
         /* 教师风采 */
         .teacher-section {
             padding: 30px 0;
             background-color: #f5f5f5;
         }
-        
+
         .teacher-container {
             display: flex;
             justify-content: space-between;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
         .teacher-card {
-            width: 30%;
+            flex: 1;
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 4px;
+            display: flex;
+            gap: 20px;
         }
-        
-        .teacher-img {
-            width: 100%;
-            height: 200px;
+
+        .teacher-photo {
+            width: 120px;
+            height: 150px;
             object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .teacher-info {
+            flex: 1;
+        }
+
+        .teacher-header {
             margin-bottom: 15px;
         }
-        
+
         .teacher-name {
             font-size: 18px;
-            font-weight: bold;
+            color: #333;
             margin-bottom: 5px;
         }
-        
+
         .teacher-title {
             color: #666;
             font-size: 14px;
+        }
+
+        .teacher-detail {
             margin-bottom: 10px;
         }
-        
-        .teacher-info {
-            font-size: 14px;
+
+        .detail-label {
             color: #666;
-            line-height: 1.5;
+            font-size: 14px;
+            margin-right: 5px;
         }
-        
+
+        .detail-content {
+            color: #333;
+            font-size: 14px;
+        }
+
         /* 学院风采 */
         .campus-section {
             padding: 30px 0;
             background-color: #fff;
         }
-        
+
         .campus-title {
             text-align: center;
             margin-bottom: 30px;
             position: relative;
         }
-        
+
         .campus-title h2 {
             font-size: 24px;
             color: #333;
@@ -421,7 +520,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .campus-title::after {
             content: "";
             position: absolute;
@@ -432,24 +531,87 @@
             background-color: #ddd;
             z-index: 0;
         }
-        
+
         .campus-gallery {
-            display: flex;
-            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+            grid-template-rows: repeat(3, 200px);
+            gap: 15px;
+            padding: 0 15px;
         }
-        
+
         .gallery-item {
-            width: 25%;
-            height: 150px;
-            padding: 5px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f5;
         }
-        
-        .gallery-img {
+
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
-        
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 特定项目的布局 */
+        .gallery-item:nth-child(1) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 4;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-column: 2 / 3;
+            grid-row: 1 / 4;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: 4 / 5;
+            grid-row: 1 / 2;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+
+        .gallery-item:nth-child(6) {
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+        }
+
+        .gallery-item:nth-child(7) {
+            grid-column: 3 / 5;
+            grid-row: 3 / 4;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            .campus-gallery {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(7, 200px);
+                gap: 10px;
+            }
+
+            .gallery-item:nth-child(n) {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+
+
+
+
         /* 页脚 */
         .footer {
             background-color: #006633;
@@ -527,6 +689,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 顶部信息栏 -->
     <div class="top-bar">
@@ -535,7 +698,7 @@
             <div class="date">今天是: 2022-1-3 12:00:00</div>
         </div>
     </div>
-    
+
     <!-- 头部区域 -->
     <header class="header">
         <div class="container">
@@ -549,7 +712,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- 导航菜单 -->
     <nav class="nav">
         <div class="container">
@@ -563,7 +726,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <!-- 轮播图 -->
     <div class="banner">
         <div class="banner-slides">
@@ -595,29 +758,70 @@
             <div class="dot" data-index="4"></div>
         </div>
     </div>
-    
+
     <!-- 快速链接 -->
     <div class="quick-links">
         <div class="container">
-            <div class="quick-link">
-                <i>📚</i>
-                <span>学校概况</span>
+            <div class="notification">
+                <div class="notification-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                </div>
+                <div class="notification-text">
+                    2025年3月2日 喜报川汇科软件互联网+学院荣获校2020-2021年度就业工作先进集体
+                </div>
             </div>
-            <div class="quick-link">
-                <i>📱</i>
-                <span>电子邮箱</span>
-            </div>
-            <div class="quick-link">
-                <i>📝</i>
-                <span>教学资料下载</span>
-            </div>
-            <div class="quick-link">
-                <i>🔍</i>
-                <span>数据查询</span>
+            <div class="quick-links-icons">
+                <div class="quick-link">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </i>
+                    <span>学术论坛</span>
+                </div>
+                <div class="quick-link">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </i>
+                    <span>电子图书馆</span>
+                </div>
+                <div class="quick-link">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="12" y1="18" x2="12" y2="12"></line>
+                            <line x1="9" y1="15" x2="15" y2="15"></line>
+                        </svg>
+                    </i>
+                    <span>教学资料下载</span>
+                </div>
+                <div class="quick-link">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                    </i>
+                    <span>联系教务处</span>
+                </div>
             </div>
         </div>
     </div>
-    
+
     <!-- 新闻和招生信息区域 -->
     <section class="news-section">
         <div class="container">
@@ -629,33 +833,33 @@
                         <a href="#" class="more">更多 ></a>
                     </div>
                     <div class="news-list">
-                        <div class="news-item with-image">
-                            <img src="../images//about.jpg" alt="城市风光" class="news-img">
+                        <div class="news-item">
+                            <img src="/placeholder.svg?height=140&width=220" alt="绵阳城市学院" class="news-img">
                             <div class="news-content">
-                                <h3 class="news-title">信阳城市学院数传学院院系力行"第三课堂"...</h3>
-                                <p class="news-desc">信阳城市学院数传学院"乐创树"工作室是学院在第一课堂学习基础上开设的第三课堂，旨在培养学生的创新精神和实践能力。</p>
-                                <span class="news-date-small">2021-12-31</span>
+                                <h3 class="news-title">绵阳城市学院软件学院着力打造"第三课堂"...</h3>
+                                <p class="news-desc">绵阳城市学院软件学院把"立德树人"作为教育的根本任务，一直高度重视学生职业素养的提升与创新精神的培养...</p>
+                                <div class="news-date">2021-12-31</div>
                             </div>
                         </div>
-                        <div class="news-item with-image">
-                            <img src="../images/news1.jpg" alt="毕业照片" class="news-img">
+                        <div class="news-item">
+                            <img src="/placeholder.svg?height=140&width=220" alt="信阳师范学院" class="news-img">
                             <div class="news-content">
-                                <h3 class="news-title">信阳城市学院数传学院（软件学院）首届程序设计大赛圆满结束</h3>
-                                <p class="news-desc">为激发学生对编程的兴趣，培养学生的创新思维和实践能力，信阳城市学院数传学院（软件学院）举办了首届程序设计大赛。</p>
-                                <span class="news-date-small">2021-12-31</span>
+                                <h3 class="news-title">信阳师范学院软件学院（软件学院）首届程序设计大赛圆满结束</h3>
+                                <p class="news-desc">为激励学生的学习兴趣、创新意识和勇于实践的科学精神，进一步培养学生的综合素质和创新实践能力，全面促进学...</p>
+                                <div class="news-date">2021-12-31</div>
                             </div>
                         </div>
-                        <div class="news-item with-image">
-                            <img src="../images/news2.jpg" alt="军训照片" class="news-img">
+                        <div class="news-item">
+                            <img src="/placeholder.svg?height=140&width=220" alt="军训照片" class="news-img">
                             <div class="news-content">
-                                <h3 class="news-title">信阳川汇软件互联网学院数据技术2020-2021学年度工作总结大会</h3>
-                                <p class="news-desc">2021年12月31日，信阳川汇软件互联网学院数据技术2020-2021学年度工作总结大会在学院报告厅举行。</p>
-                                <span class="news-date-small">2021-12-31</span>
+                                <h3 class="news-title">喜报川科软件互联网+学院荣获校2020-2021年度就业工作先进集体</h3>
+                                <p class="news-desc">2021年12月1日，四川科技职业学院在国际演播厅召开了"2021年就业工作表彰大会暨2022届毕业生实习就业工...</p>
+                                <div class="news-date">2021-12-31</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 招生信息 -->
                 <div class="news-column">
                     <div class="section-header">
@@ -668,8 +872,8 @@
                                 <div class="date-day">31</div>
                                 <div class="date-month">2021-12</div>
                             </div>
-                            <div class="news-content">
-                                <h3 class="news-title">学院发展（在"聘"上下功夫，在"行"上见真章——五联动四举措推进高层次人才引进工作）</h3>
+                            <div class="admission-content">
+                                <h3 class="admission-title">学思践悟|在"聘"上下功夫，在"行"上见成效——互联网+学院UI岗位项目班UBL3.0第二阶段成果汇报</h3>
                             </div>
                         </div>
                         <div class="admission-item">
@@ -677,8 +881,8 @@
                                 <div class="date-day">31</div>
                                 <div class="date-month">2021-12</div>
                             </div>
-                            <div class="news-content">
-                                <h3 class="news-title">川汇中坚人才工程师范类第二批学生赴实践基地见习</h3>
+                            <div class="admission-content">
+                                <h3 class="admission-title">川科中德&人工智能学院第二批学生赴富维集团实习</h3>
                             </div>
                         </div>
                         <div class="admission-item">
@@ -686,8 +890,8 @@
                                 <div class="date-day">31</div>
                                 <div class="date-month">2021-12</div>
                             </div>
-                            <div class="news-content">
-                                <h3 class="news-title">世纪软件与广东文理职业学院院校对接建立产业学院</h3>
+                            <div class="admission-content">
+                                <h3 class="admission-title">世纪软件与广东文理职业学院签约共建产业学院</h3>
                             </div>
                         </div>
                     </div>
@@ -695,84 +899,124 @@
             </div>
         </div>
     </section>
-    
+
+
+
     <!-- 按钮区域 -->
     <div class="btn-section">
-        <button class="btn">优秀教师</button>
-        <button class="btn">优秀学生</button>
+        <button class="btn btn-primary">优秀教师</button>
+        <button class="btn btn-outline">优秀学生</button>
     </div>
-    
+
     <!-- 教师风采 -->
     <section class="teacher-section">
-        <div class="container">
-            <div class="teacher-container">
-                <div class="teacher-card">
-                    <img src="../images/t1.jpg" alt="张教授" class="teacher-img">
-                    <h3 class="teacher-name">张德霞 <span>(博士)</span></h3>
-                    <p class="teacher-title">学科：数据通信系统设计</p>
-                    <p class="teacher-info">
-                        职位：数传学院院长<br>
-                        电子学与通信工学博士<br>
-                        工程学教授
-                    </p>
+        <div class="teacher-container">
+            <div class="teacher-card">
+                <img src="/placeholder.svg?height=150&width=120" alt="张薇薇" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-header">
+                        <h3 class="teacher-name">张薇薇 <span>(博士)</span></h3>
+                    </div>
+                    <div class="teacher-detail">
+                        <span class="detail-label">学科：</span>
+                        <span class="detail-content">集成电路系统设计</span>
+                    </div>
+                    <div class="teacher-detail">
+                        <span class="detail-label">单位：</span>
+                        <span class="detail-content">软件学院先进制造工程学院教师</span>
+                    </div>
                 </div>
-                <div class="teacher-card">
-                    <img src="../images/t2.jpg" alt="李教授" class="teacher-img">
-                    <h3 class="teacher-name">李丽沙 <span>(硕士)</span></h3>
-                    <p class="teacher-title">学科：计算机网络与通信</p>
-                    <p class="teacher-info">
-                        职位：软件学院副院长<br>
-                        教授
-                    </p>
+            </div>
+            <div class="teacher-card">
+                <img src="/placeholder.svg?height=150&width=120" alt="李丽莎" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-header">
+                        <h3 class="teacher-name">李丽莎 <span>(硕士)</span></h3>
+                    </div>
+                    <div class="teacher-detail">
+                        <span class="detail-label">学科：</span>
+                        <span class="detail-content">计算机数据结构与算法</span>
+                    </div>
+                    <div class="teacher-detail">
+                        <span class="detail-label">单位：</span>
+                        <span class="detail-content">软件学院计算机学院教师</span>
+                    </div>
                 </div>
-                <div class="teacher-card">
-                    <img src="../images/t3.jpg" alt="刘教授" class="teacher-img">
-                    <h3 class="teacher-name">刘诚 <span>(教授)</span></h3>
-                    <p class="teacher-title">学科：数据挖掘</p>
-                    <p class="teacher-info">
-                        职位：数据科学研究所所长<br>
-                        教授
-                    </p>
+            </div>
+            <div class="teacher-card">
+                <img src="/placeholder.svg?height=150&width=120" alt="刘民" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-header">
+                        <h3 class="teacher-name">刘民 <span>(教授)</span></h3>
+                    </div>
+                    <div class="teacher-detail">
+                        <span class="detail-label">学科：</span>
+                        <span class="detail-content">高能物理</span>
+                    </div>
+                    <div class="teacher-detail">
+                        <span class="detail-label">单位：</span>
+                        <span class="detail-content">软件学院物理学院院长</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+
     <!-- 学院风采 -->
     <section class="campus-section">
-        <div class="container">
-            <div class="campus-title">
-                <h2>学院风采</h2>
+        <div class="campus-title">
+            <h2>学院风采</h2>
+        </div>
+        <div class="campus-gallery">
+            <!-- 左侧大图 - 毕业照 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="毕业典礼" loading="lazy">
             </div>
-            <div class="campus-gallery">
-                <div class="gallery-item">
-                    <img src="../images/photo/f1.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f2.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f3.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f4.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f5.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f6.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f7.jpg" alt="校园风光" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/photo/f8.jpg" alt="校园风光" class="gallery-img">
-                </div>
+
+            <!-- 中间大图 - 校园风光 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="校园风光" loading="lazy">
+            </div>
+
+            <!-- 右上第一张 - 校园景色 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="校园景色" loading="lazy">
+            </div>
+
+            <!-- 右上第二张 - 学习场景 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="学习场景" loading="lazy">
+            </div>
+
+            <!-- 右中第一张 - 学习讨论 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="学习讨论" loading="lazy">
+            </div>
+
+            <!-- 右中第二张 - 课堂学习 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="课堂学习" loading="lazy">
+            </div>
+
+            <!-- 右下大图 - 师生合影 -->
+            <div class="gallery-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
+                    alt="师生合影" loading="lazy">
             </div>
         </div>
     </section>
-    
+
+
+
+
+
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-container">
@@ -814,20 +1058,20 @@
 
     <!-- JavaScript 轮播图功能 -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // 获取轮播图元素
             const slides = document.querySelectorAll('.banner-slide');
             const dots = document.querySelectorAll('.dot');
             const prevBtn = document.getElementById('prev-slide');
             const nextBtn = document.getElementById('next-slide');
-            
+
             let currentIndex = 0;
             const slideCount = slides.length;
-            
+
             // 设置自动轮播的间隔时间（毫秒）
             const autoSlideInterval = 5000;
             let autoSlideTimer;
-            
+
             // 显示指定索引的幻灯片
             function showSlide(index) {
                 // 确保索引在有效范围内
@@ -836,73 +1080,74 @@
                 } else if (index >= slideCount) {
                     index = 0;
                 }
-                
+
                 // 隐藏所有幻灯片并移除所有点的活动状态
                 slides.forEach(slide => slide.classList.remove('active'));
                 dots.forEach(dot => dot.classList.remove('active'));
-                
+
                 // 显示当前幻灯片并激活对应的点
                 slides[index].classList.add('active');
                 dots[index].classList.add('active');
-                
+
                 // 更新当前索引
                 currentIndex = index;
             }
-            
+
             // 下一张幻灯片
             function nextSlide() {
                 showSlide(currentIndex + 1);
             }
-            
+
             // 上一张幻灯片
             function prevSlide() {
                 showSlide(currentIndex - 1);
             }
-            
+
             // 开始自动轮播
             function startAutoSlide() {
                 stopAutoSlide(); // 先停止之前的定时器
                 autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
             }
-            
+
             // 停止自动轮播
             function stopAutoSlide() {
                 if (autoSlideTimer) {
                     clearInterval(autoSlideTimer);
                 }
             }
-            
+
             // 为左右箭头按钮添加点击事件
-            prevBtn.addEventListener('click', function() {
+            prevBtn.addEventListener('click', function () {
                 prevSlide();
                 // 点击后重新开始自动轮播
                 startAutoSlide();
             });
-            
-            nextBtn.addEventListener('click', function() {
+
+            nextBtn.addEventListener('click', function () {
                 nextSlide();
                 // 点击后重新开始自动轮播
                 startAutoSlide();
             });
-            
+
             // 为指示点添加点击事件
-            dots.forEach(function(dot, index) {
-                dot.addEventListener('click', function() {
+            dots.forEach(function (dot, index) {
+                dot.addEventListener('click', function () {
                     showSlide(index);
                     // 点击后重新开始自动轮播
                     startAutoSlide();
                 });
             });
-            
+
             // 当鼠标悬停在轮播图上时，停止自动轮播
             const banner = document.querySelector('.banner');
             banner.addEventListener('mouseenter', stopAutoSlide);
             banner.addEventListener('mouseleave', startAutoSlide);
-            
+
             // 初始化：显示第一张幻灯片并开始自动轮播
             showSlide(0);
             startAutoSlide();
         });
     </script>
 </body>
+
 </html>
