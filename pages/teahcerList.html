@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师查询 - 数传技术学院</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 顶部信息栏 */
+        .top-bar {
+            background-color: #f8f8f8;
+            padding: 5px 0;
+            font-size: 12px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 头部区域 */
+        .header {
+            background-color: #fff;
+            padding: 15px 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: #006633;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        /* 导航菜单样式 */
+        .nav {
+            background-color: #006633;
+            position: relative;
+            z-index: 100;
+        }
+
+        .nav-menu {
+            display: flex;
+            height: 50px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            flex: 1;
+            position: relative;
+            text-align: center;
+        }
+
+        .nav-link {
+            display: block;
+            line-height: 50px;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover>.nav-link {
+            background-color: #005528;
+        }
+
+        /* 下拉菜单样式 */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #007a3d;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border-top: 2px solid #004422;
+        }
+
+        .nav-item.has-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            border-bottom: 1px solid #008c46;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #005528;
+            color: white;
+        }
+
+        /* 轮播图 */
+        .banner {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .banner-slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #006633;
+        }
+
+        /* 教师查询标题 */
+        .search-title-container {
+            position: relative;
+            background-color: #006633;
+            padding: 15px 0;
+            
+        }
+
+        .search-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #006633;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-school {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .language-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .language-options a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .language-options a:hover {
+            color: white;
+        }
+
+        /* 教师查询页面特定样式 */
+        .search-filters {
+            background-color: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .filter-label {
+            width: 80px;
+            text-align: right;
+            margin-right: 15px;
+            color: #666;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 150px;
+            outline: none;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            border-color: #006633;
+        }
+
+        .filter-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .filter-tab.active {
+            color: #006633;
+            border-bottom-color: #006633;
+            font-weight: bold;
+        }
+
+        .search-input-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .search-input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #006633;
+        }
+
+        .search-btn {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #005528;
+        }
+
+        .reset-btn {
+            background-color: #f5f5f5;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .reset-btn:hover {
+            background-color: #eee;
+        }
+
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px 0;
+        }
+
+        .teacher-card {
+            background-color: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .teacher-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .teacher-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .teacher-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .teacher-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .teacher-department {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .teacher-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .teacher-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .nav-item {
+                text-align: left;
+            }
+
+            .nav-link {
+                padding: 10px 15px;
+                line-height: 1.5;
+            }
+
+            .dropdown-menu {
+                position: static;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                background-color: #008c46;
+                border-top: none;
+            }
+
+            .nav-item.has-dropdown.active .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                text-align: left;
+                padding-left: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .teacher-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-label {
+                width: 100%;
+                text-align: left;
+                margin-bottom: 5px;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .search-input-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .search-btn, .reset-btn {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部信息栏 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="welcome">欢迎 | 登入/注册</div>
+            <div class="date">今天是: 2022-1-3 12:00:00</div>
+        </div>
+    </div>
+
+    <!-- 头部区域 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="数传技术学院logo">
+
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="输入关键字搜索">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 导航菜单 -->
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">机构设置</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">学院概况</a></li>
+                        <li><a href="#">组织机构</a></li>
+                        <li><a href="#">学院领导</a></li>
+                        <li><a href="#">行政部门</a></li>
+                        <li><a href="#">教学部门</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">教师队伍</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">师资概况</a></li>
+                        <li><a href="#">教授团队</a></li>
+                        <li><a href="#">副教授团队</a></li>
+                        <li><a href="#">讲师团队</a></li>
+                        <li><a href="#">实验教师</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">新闻资讯</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">学院新闻</a></li>
+                        <li><a href="#">通知公告</a></li>
+                        <li><a href="#">学术动态</a></li>
+                        <li><a href="#">教学活动</a></li>
+                        <li><a href="#">学生活动</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">合作交流</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">国际合作</a></li>
+                        <li><a href="#">校企合作</a></li>
+                        <li><a href="#">合作项目</a></li>
+                        <li><a href="#">交流活动</a></li>
+                        <li><a href="#">合作单位</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">关于我们</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">学院简介</a></li>
+                        <li><a href="#">发展历程</a></li>
+                        <li><a href="#">学院荣誉</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 轮播图 -->
+    <div class="banner">
+        <div class="banner-slides">
+            <div class="banner-slide active">
+                <img src="../images/banner/1.jpg" alt="在线教育1" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="../images/banner/2.jpg" alt="在线教育2" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="../images/banner/3.jpg" alt="在线教育3" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="../images/banner/4.jpg" alt="在线教育4" class="banner-img">
+            </div>
+            <div class="banner-slide">
+                <img src="../images/banner/1.jpg" alt="在线教育5" class="banner-img">
+            </div>
+        </div>
+        <div class="banner-arrows">
+            <div class="arrow" id="prev-slide">&#10094;</div>
+            <div class="arrow" id="next-slide">&#10095;</div>
+        </div>
+        <div class="banner-dots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+        </div>
+    </div>
+
+    <!-- 教师查询标题 -->
+    <div class="search-title-container">
+        <div class="container">
+            <div class="search-title">教师查询</div>
+        </div>
+    </div>
+
+    <!-- 教师查询筛选区域 -->
+    <div class="search-filters">
+        <div class="container">
+            <div class="filter-row">
+                <div class="filter-label">院校:</div>
+                <div class="filter-options">
+                    <select class="filter-select">
+                        <option value="">全部院校</option>
+                        <option value="软件学院">软件学院</option>
+                        <option value="计算机学院">计算机学院</option>
+                        <option value="电子信息学院">电子信息学院</option>
+                        <option value="数学学院">数学学院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="filter-label">专业:</div>
+                <div class="filter-options">
+                    <select class="filter-select">
+                        <option value="">全部专业</option>
+                        <option value="软件工程">软件工程</option>
+                        <option value="计算机科学与技术">计算机科学与技术</option>
+                        <option value="人工智能">人工智能</option>
+                        <option value="数据科学">数据科学</option>
+                        <option value="网络工程">网络工程</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-tabs">
+                <div class="filter-tab active">全部</div>
+                <div class="filter-tab">教授</div>
+                <div class="filter-tab">副教授</div>
+                <div class="filter-tab">讲师</div>
+                <div class="filter-tab">助教</div>
+                <div class="filter-tab">研究员</div>
+                <div class="filter-tab">博士后</div>
+            </div>
+            <div class="search-input-container">
+                <input type="text" class="search-input" placeholder="输入教师姓名">
+                <button class="search-btn">搜索</button>
+                <button class="reset-btn">重置</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 教师列表 -->
+    <div class="container">
+        <div class="teacher-grid">
+            <!-- 教师卡片 1 -->
+            <div class="teacher-card">
+                <img src="../images/t1.jpg" alt="张薇薇" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">张薇薇</div>
+                    <div class="teacher-title">博士 | 副教授</div>
+                    <div class="teacher-department">软件学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 2 -->
+            <div class="teacher-card">
+                <img src="../images//t2.jpg" alt="李丽莎" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">李丽莎</div>
+                    <div class="teacher-title">硕士 | 讲师</div>
+                    <div class="teacher-department">计算机学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 3 -->
+            <div class="teacher-card">
+                <img src="../images/t3.jpg" alt="刘民" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">刘民</div>
+                    <div class="teacher-title">博士 | 教授</div>
+                    <div class="teacher-department">物理学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 4 -->
+            <div class="teacher-card">
+                <img src="../images/t4.jpg" alt="冯婷婷" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">冯婷婷</div>
+                    <div class="teacher-title">硕士 | 讲师</div>
+                    <div class="teacher-department">软件学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 5 -->
+            <div class="teacher-card">
+                <img src="../images/t5.jpg" alt="赵三金" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">赵三金</div>
+                    <div class="teacher-title">博士 | 副教授</div>
+                    <div class="teacher-department">软件学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 6 -->
+            <div class="teacher-card">
+                <img src="../images/t1.jpg" alt="张薇薇" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">张薇薇</div>
+                    <div class="teacher-title">博士 | 副教授</div>
+                    <div class="teacher-department">软件学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 7 -->
+            <div class="teacher-card">
+                <img src="../images/t3.jpg" alt="李丽莎" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">李丽莎</div>
+                    <div class="teacher-title">硕士 | 讲师</div>
+                    <div class="teacher-department">计算机学院</div>
+                </div>
+            </div>
+            
+            <!-- 教师卡片 8 -->
+            <div class="teacher-card">
+                <img src="../images/t5.jpg" alt="刘民" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">刘民</div>
+                    <div class="teacher-title">博士 | 教授</div>
+                    <div class="teacher-department">物理学院</div>
+                </div>
+            </div>
+
+             <!-- 教师卡片 9 -->
+             <div class="teacher-card">
+                <img src="../images/t1.jpg" alt="刘民" class="teacher-photo">
+                <div class="teacher-info">
+                    <div class="teacher-name">刘民</div>
+                    <div class="teacher-title">博士 | 教授</div>
+                    <div class="teacher-department">物理学院</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-school">数传学院</div>
+                <div class="footer-contact">
+                    电话号码：400-888-8888 | 招生电话：10000
+                </div>
+                <div class="footer-contact">
+                    学校地址：170xxxx省 x市xx区 xxxxxxxxxxxxxxx号
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">教务处</a>
+                    <a href="#" class="footer-link">信息中心</a>
+                    <a href="#" class="footer-link">VR体验</a>
+                    <a href="#" class="footer-link">网络管理部</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">招生办</a>
+                    <a href="#" class="footer-link">就业办</a>
+                    <a href="#" class="footer-link">QA系统</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="language-options">
+                <a href="#">中文</a>
+                <span>|</span>
+                <a href="#">英文</a>
+                <span>|</span>
+                <a href="#">日文</a>
+                <span>|</span>
+                <a href="#">韩文</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 轮播图功能
+            const slides = document.querySelectorAll('.banner-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+
+            let currentIndex = 0;
+            const slideCount = slides.length;
+
+            // 设置自动轮播的间隔时间（毫秒）
+            const autoSlideInterval = 5000;
+            let autoSlideTimer;
+
+            // 显示指定索引的幻灯片
+            function showSlide(index) {
+                // 确保索引在有效范围内
+                if (index < 0) {
+                    index = slideCount - 1;
+                } else if (index >= slideCount) {
+                    index = 0;
+                }
+
+                // 隐藏所有幻灯片并移除所有点的活动状态
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // 显示当前幻灯片并激活对应的点
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                // 更新当前索引
+                currentIndex = index;
+            }
+
+            // 下一张幻灯片
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+
+            // 上一张幻灯片
+            function prevSlide()  {
+                showSlide(currentIndex + 1);
+            }
+
+            // 上一张幻灯片
+            function prevSlide() {
+                showSlide(currentIndex - 1);
+            }
+
+            // 开始自动轮播
+            function startAutoSlide() {
+                stopAutoSlide(); // 先停止之前的定时器
+                autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
+            }
+
+            // 停止自动轮播
+            function stopAutoSlide() {
+                if (autoSlideTimer) {
+                    clearInterval(autoSlideTimer);
+                }
+            }
+
+            // 为左右箭头按钮添加点击事件
+            prevBtn.addEventListener('click', function () {
+                prevSlide();
+                // 点击后重新开始自动轮播
+                startAutoSlide();
+            });
+
+            nextBtn.addEventListener('click', function () {
+                nextSlide();
+                // 点击后重新开始自动轮播
+                startAutoSlide();
+            });
+
+            // 为指示点添加点击事件
+            dots.forEach(function (dot, index) {
+                dot.addEventListener('click', function () {
+                    showSlide(index);
+                    // 点击后重新开始自动轮播
+                    startAutoSlide();
+                });
+            });
+
+            // 当鼠标悬停在轮播图上时，停止自动轮播
+            const banner = document.querySelector('.banner');
+            banner.addEventListener('mouseenter', stopAutoSlide);
+            banner.addEventListener('mouseleave', startAutoSlide);
+
+            // 初始化：显示第一张幻灯片并开始自动轮播
+            showSlide(0);
+            startAutoSlide();
+            
+            // 获取所有筛选标签
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            
+            // 为每个标签添加点击事件
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签的active类
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    // 为当前点击的标签添加active类
+                    this.classList.add('active');
+                    
+                    // 这里可以添加筛选逻辑
+                    const filterValue = this.textContent;
+                    console.log('筛选条件:', filterValue);
+                    
+                    // 模拟筛选效果（实际应用中可以根据筛选条件过滤教师卡片）
+                    // filterTeachers(filterValue);
+                });
+            });
+            
+            // 搜索按钮点击事件
+            const searchBtn = document.querySelector('.search-btn');
+            searchBtn.addEventListener('click', function() {
+                const searchValue = document.querySelector('.search-input').value.trim();
+                if (searchValue) {
+                    console.log('搜索关键词:', searchValue);
+                    // 执行搜索逻辑
+                    // searchTeachers(searchValue);
+                    alert('正在搜索: ' + searchValue);
+                } else {
+                    alert('请输入搜索关键词');
+                }
+            });
+            
+            // 重置按钮点击事件
+            const resetBtn = document.querySelector('.reset-btn');
+            resetBtn.addEventListener('click', function() {
+                // 清空搜索框
+                document.querySelector('.search-input').value = '';
+                
+                // 重置下拉选择框
+                document.querySelectorAll('.filter-select').forEach(select => {
+                    select.selectedIndex = 0;
+                });
+                
+                // 重置筛选标签
+                filterTabs.forEach(t => t.classList.remove('active'));
+                filterTabs[0].classList.add('active');
+                
+                // 重置教师列表显示
+                // resetTeacherDisplay();
+                
+                console.log('已重置所有筛选条件');
+            });
+            
+            // 更新当前日期和时间
+            function updateDateTime() {
+                const now = new Date();
+                const dateStr = now.getFullYear() + '-' + 
+                               (now.getMonth() + 1).toString().padStart(2, '0') + '-' + 
+                               now.getDate().toString().padStart(2, '0');
+                const timeStr = now.getHours().toString().padStart(2, '0') + ':' + 
+                               now.getMinutes().toString().padStart(2, '0') + ':' + 
+                               now.getSeconds().toString().padStart(2, '0');
+                document.querySelector('.date').textContent = '今天是: ' + dateStr + ' ' + timeStr;
+            }
+            
+            // 初始化时更新一次
+            updateDateTime();
+            
+            // 每秒更新一次时间
+            setInterval(updateDateTime, 1000);
+        });
+    </script>
+</body>
+   
+</html>
