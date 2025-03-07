@@ -512,153 +512,162 @@
             cursor: pointer;
         }
 
-/* 按钮区域样式 */
-.btn-section {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
-}
+        /* 按钮区域样式 */
+        .btn-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
 
-.btn {
-    padding: 10px 40px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        .btn {
+            padding: 10px 40px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.btn-primary {
-    background-color: #006633;
-    color: white;
-    border: 1px solid #006633;
-}
+        .btn-primary {
+            background-color: #006633;
+            color: white;
+            border: 1px solid #006633;
+        }
 
-.btn-outline {
-    background-color: transparent;
-    color: #006633;
-    border: 1px solid #006633;
-}
+        .btn-outline {
+            background-color: transparent;
+            color: #006633;
+            border: 1px solid #006633;
+        }
 
-.btn:hover {
-    opacity: 0.9;
-}
+        .btn:hover {
+            opacity: 0.9;
+        }
 
-/* 活跃按钮样式 */
-.btn.active {
-    box-shadow: 0 0 10px rgba(0, 102, 51, 0.3);
-    transform: translateY(-2px);
-}
+        /* 活跃按钮样式 */
+        .btn.active {
+            box-shadow: 0 0 10px rgba(0, 102, 51, 0.3);
+            transform: translateY(-2px);
+        }
 
-.btn-outline.active {
-    background-color: #006633;
-    color: white;
-}
+        .btn-outline.active {
+            background-color: #006633;
+            color: white;
+        }
 
-/* 风采展示容器 - 确保一致的高度 */
-.profiles-container {
-    position: relative;
-    min-height: 300px; /* 设置最小高度，防止内容切换时页面跳动 */
-    background-color: #f5f5f5;
-    padding: 30px 0;
-}
+        /* 风采展示容器 - 确保一致的高度 */
+        .profiles-container {
+            position: relative;
+            min-height: 300px;
+            /* 设置最小高度，防止内容切换时页面跳动 */
+            background-color: #f5f5f5;
+            padding: 30px 0;
+        }
 
-/* 通用风采区域样式 */
-.profile-section {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    padding: 30px 0;
-}
+        /* 通用风采区域样式 */
+        .profile-section {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            padding: 30px 0;
+        }
 
-.profile-section[style*="display: none"] {
-    opacity: 0;
-    pointer-events: none;
-}
+        .profile-section[style*="display: none"] {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-.profile-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap; /* 添加换行支持 */
-}
+        .profile-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            /* 添加换行支持 */
+        }
 
-.profile-card {
-    flex: 1;
-    min-width: 300px; /* 确保在小屏幕上不会太窄 */
-    background-color: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    padding: 20px;
-    border-radius: 4px;
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px; /* 在换行时提供间距 */
-    height: 220px; /* 固定高度，确保一致性 */
-    overflow: hidden; /* 防止内容溢出 */
-    border-left: 4px solid #006633; /* 统一的左侧边框 */
-}
+        .profile-card {
+            flex: 1;
+            min-width: 300px;
+            /* 确保在小屏幕上不会太窄 */
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            /* 在换行时提供间距 */
+            height: 220px;
+            /* 固定高度，确保一致性 */
+            overflow: hidden;
+            /* 防止内容溢出 */
+            border-left: 4px solid #006633;
+            /* 统一的左侧边框 */
+        }
 
-.profile-photo {
-    width: 120px;
-    height: 150px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
+        .profile-photo {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
 
-.profile-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
+        .profile-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.profile-header {
-    margin-bottom: 15px;
-}
+        .profile-header {
+            margin-bottom: 15px;
+        }
 
-.profile-name {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 5px;
-}
+        .profile-name {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
 
-.profile-detail {
-    margin-bottom: 10px;
-}
+        .profile-detail {
+            margin-bottom: 10px;
+        }
 
-.detail-label {
-    color: #666;
-    font-size: 14px;
-    margin-right: 5px;
-}
+        .detail-label {
+            color: #666;
+            font-size: 14px;
+            margin-right: 5px;
+        }
 
-.detail-content {
-    color: #333;
-    font-size: 14px;
-}
+        .detail-content {
+            color: #333;
+            font-size: 14px;
+        }
 
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-    }
-    
-    .profile-card {
-        width: 100%;
-        height: auto; /* 在移动设备上允许高度自适应 */
-        min-height: 220px;
-    }
-    
-    .profiles-container {
-        min-height: 700px; /* 移动设备上增加最小高度 */
-    }
-}
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
 
-        /* 学院风采 */
+            .profile-card {
+                width: 100%;
+                height: auto;
+                /* 在移动设备上允许高度自适应 */
+                min-height: 220px;
+            }
+
+            .profiles-container {
+                min-height: 700px;
+                /* 移动设备上增加最小高度 */
+            }
+        }
+
+        /* 学院风采 - 更新后的样式 */
         .campus-section {
             padding: 30px 0;
             background-color: #fff;
@@ -691,85 +700,114 @@
             z-index: 0;
         }
 
+        /* 新的学院风采画廊样式 */
         .campus-gallery {
-            max-width: 1200px;
+            max-width: 2000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
-            grid-template-rows: repeat(3, 200px);
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             padding: 0 15px;
+        }
+
+        .gallery-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .gallery-row {
+            display: flex;
+            gap: 10px;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .gallery-item img {
+        /* 子集样式 - 不同尺寸的图片 */
+        .gallery-item-large {
+            width: 350px;
+            height: 460px;
+        }
+
+        .gallery-item-medium {
+            width: 350px;
+            height: 230px;
+        }
+
+        .gallery-item-small {
+            width: 175px;
+            height: 230px;
+        }
+
+        /* 子集样式 - 图片包装器 */
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* 子集样式 - 图片 */
+        .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease, filter 0.3s ease;
         }
 
-        .gallery-item:hover img {
+        /* 子集样式 - 悬停效果 */
+        .gallery-image.hovered {
             transform: scale(1.05);
+            filter: brightness(0.8);
         }
 
-        /* 特定项目的布局 */
-        .gallery-item:nth-child(1) {
-            grid-column: 1 / 2;
-            grid-row: 1 / 4;
+        /* 子集样式 - 覆盖层 */
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0, 102, 51, 0.7));
+            padding: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .gallery-item:nth-child(2) {
-            grid-column: 2 / 3;
-            grid-row: 1 / 4;
+        .image-wrapper:hover .image-overlay {
+            opacity: 1;
         }
 
-        .gallery-item:nth-child(3) {
-            grid-column: 3 / 4;
-            grid-row: 1 / 2;
+        /* 子集样式 - 标题 */
+        .image-caption {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .gallery-item:nth-child(4) {
-            grid-column: 4 / 5;
-            grid-row: 1 / 2;
-        }
-
-        .gallery-item:nth-child(5) {
-            grid-column: 3 / 4;
-            grid-row: 2 / 3;
-        }
-
-        .gallery-item:nth-child(6) {
-            grid-column: 4 / 5;
-            grid-row: 2 / 3;
-        }
-
-        .gallery-item:nth-child(7) {
-            grid-column: 3 / 5;
-            grid-row: 3 / 4;
-        }
-
-        /* 响应式布局 */
+        /* 响应式调整 */
         @media (max-width: 768px) {
             .campus-gallery {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(7, 200px);
-                gap: 10px;
+                flex-direction: column;
             }
 
-            .gallery-item:nth-child(n) {
-                grid-column: 1;
-                grid-row: auto;
+            .gallery-item-large,
+            .gallery-item-medium,
+            .gallery-item-small {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+
+            .gallery-row {
+                flex-direction: column;
             }
         }
-
-
-
 
         /* 页脚 */
         .footer {
@@ -985,6 +1023,7 @@
                     <i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7  stroke-linejoin="round">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
                     </i>
@@ -1039,7 +1078,7 @@
                     </div>
                     <div class="news-list">
                         <div class="news-item">
-                            <img src="/placeholder.svg?height=140&width=220" alt="绵阳城市学院" class="news-img">
+                            <img src="../images/about.jpg" alt="绵阳城市学院" class="news-img">
                             <div class="news-content">
                                 <h3 class="news-title">绵阳城市学院软件学院着力打造"第三课堂"...</h3>
                                 <p class="news-desc">绵阳城市学院软件学院把"立德树人"作为教育的根本任务，一直高度重视学生职业素养的提升与创新精神的培养...</p>
@@ -1047,7 +1086,7 @@
                             </div>
                         </div>
                         <div class="news-item">
-                            <img src="/placeholder.svg?height=140&width=220" alt="信阳师范学院" class="news-img">
+                            <img src="../images/news1.jpg" alt="信阳师范学院" class="news-img">
                             <div class="news-content">
                                 <h3 class="news-title">信阳师范学院软件学院（软件学院）首届程序设计大赛圆满结束</h3>
                                 <p class="news-desc">为激励学生的学习兴趣、创新意识和勇于实践的科学精神，进一步培养学生的综合素质和创新实践能力，全面促进学...</p>
@@ -1055,7 +1094,7 @@
                             </div>
                         </div>
                         <div class="news-item">
-                            <img src="/placeholder.svg?height=140&width=220" alt="军训照片" class="news-img">
+                            <img src="../images/news2.jpg" alt="军训照片" class="news-img">
                             <div class="news-content">
                                 <h3 class="news-title">喜报川科软件互联网+学院荣获校2020-2021年度就业工作先进集体</h3>
                                 <p class="news-desc">2021年12月1日，四川科技职业学院在国际演播厅召开了"2021年就业工作表彰大会暨2022届毕业生实习就业工...</p>
@@ -1106,270 +1145,219 @@
     </section>
 
 
-<!-- 按钮区域 -->
-<div class="btn-section">
-    <button class="btn btn-primary active" id="teacher-btn">优秀教师</button>
-    <button class="btn btn-outline" id="student-btn">优秀学生</button>
-</div>
+    <!-- 按钮区域 -->
+    <div class="btn-section">
+        <button class="btn btn-primary active" id="teacher-btn">优秀教师</button>
+        <button class="btn btn-outline" id="student-btn">优秀学生</button>
+    </div>
 
-<!-- 风采展示容器 -->
-<div class="profiles-container">
-    <!-- 教师风采 -->
-    <section class="profile-section" id="teacher-profiles">
-        <div class="profile-container">
-            <div class="profile-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="张薇薇" class="profile-photo">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <h3 class="profile-name">张薇薇 <span>(博士)</span></h3>
+    <!-- 风采展示容器 -->
+    <div class="profiles-container">
+        <!-- 教师风采 -->
+        <section class="profile-section" id="teacher-profiles">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <img src="../images/t1.jpg" alt="张薇薇" class="profile-photo">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <h3 class="profile-name">张薇薇 <span>(博士)</span></h3>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">学科：</span>
+                            <span class="detail-content">集成电路系统设计</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">单位：</span>
+                            <span class="detail-content">软件学院先进制造工程学院教师</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">&nbsp;</span>
+                            <span class="detail-content">&nbsp;</span>
+                        </div>
                     </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">学科：</span>
-                        <span class="detail-content">集成电路系统设计</span>
+                </div>
+                <div class="profile-card">
+                    <img src="../images/t2.jpg" alt="李丽莎" class="profile-photo">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <h3 class="profile-name">李丽莎 <span>(硕士)</span></h3>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">学科：</span>
+                            <span class="detail-content">计算机数据结构与算法</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">单位：</span>
+                            <span class="detail-content">软件学院计算机学院教师</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">&nbsp;</span>
+                            <span class="detail-content">&nbsp;</span>
+                        </div>
                     </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">单位：</span>
-                        <span class="detail-content">软件学院先进制造工程学院教师</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">&nbsp;</span>
-                        <span class="detail-content">&nbsp;</span>
+                </div>
+                <div class="profile-card">
+                    <img src="../images/t3.jpg" alt="刘民" class="profile-photo">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <h3 class="profile-name">刘民 <span>(教授)</span></h3>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">学科：</span>
+                            <span class="detail-content">高能物理</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">单位：</span>
+                            <span class="detail-content">软件学院物理学院院长</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">&nbsp;</span>
+                            <span class="detail-content">&nbsp;</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="profile-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="李丽莎" class="profile-photo">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <h3 class="profile-name">李丽莎 <span>(硕士)</span></h3>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">学科：</span>
-                        <span class="detail-content">计算机数据结构与算法</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">单位：</span>
-                        <span class="detail-content">软件学院计算机学院教师</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">&nbsp;</span>
-                        <span class="detail-content">&nbsp;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="刘民" class="profile-photo">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <h3 class="profile-name">刘民 <span>(教授)</span></h3>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">学科：</span>
-                        <span class="detail-content">高能物理</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">单位：</span>
-                        <span class="detail-content">软件学院物理学院院长</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">&nbsp;</span>
-                        <span class="detail-content">&nbsp;</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 学生风采 -->
-    <section class="profile-section" id="student-profiles" style="display: none;">
-        <div class="profile-container">
-            <div class="profile-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="王明" class="profile-photo">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <h3 class="profile-name">王明</h3>
+        <!-- 学生风采 -->
+        <section class="profile-section" id="student-profiles" style="display: none;">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <img src="../images/s1.jpg" alt="农听枫" class="profile-photo">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <h3 class="profile-name">农听枫 <span>(学生)</span></h3>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">学科：</span>
+                            <span class="detail-content">土木专业</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">单位：</span>
+                            <span class="detail-content">软件学院工程系</span>
+                        </div>
                     </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">专业：</span>
-                        <span class="detail-content">软件工程</span>
+                </div>
+                <div class="profile-card">
+                    <img src="../images/s2.jpg" alt="张雪" class="profile-photo">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <h3 class="profile-name">茅娇娇 <span>(学生)</span></h3>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">学科：</span>
+                            <span class="detail-content">计算机</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">单位：</span>
+                            <span class="detail-content">软件学院计算机</span>
+                        </div>
                     </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">年级：</span>
-                        <span class="detail-content">2020级本科生</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">荣誉：</span>
-                        <span class="detail-content">国家奖学金、ACM程序设计大赛金奖</span>
+                </div>
+                <div class="profile-card">
+                    <img src="../images/s3.jpg" alt="李强" class="profile-photo">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <h3 class="profile-name">农听枫 <span>(学生)</span></h3>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">学科：</span>
+                            <span class="detail-content">数学</span>
+                        </div>
+                        <div class="profile-detail">
+                            <span class="detail-label">单位：</span>
+                            <span class="detail-content">软件学院数学系</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="profile-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="张雪" class="profile-photo">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <h3 class="profile-name">张雪</h3>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">专业：</span>
-                        <span class="detail-content">数据科学与大数据技术</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">年级：</span>
-                        <span class="detail-content">2021级本科生</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">荣誉：</span>
-                        <span class="detail-content">校级三好学生、数学建模竞赛一等奖</span>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="李强" class="profile-photo">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <h3 class="profile-name">李强</h3>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">专业：</span>
-                        <span class="detail-content">人工智能</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">年级：</span>
-                        <span class="detail-content">2019级研究生</span>
-                    </div>
-                    <div class="profile-detail">
-                        <span class="detail-label">荣誉：</span>
-                        <span class="detail-content">优秀学生干部、科技创新奖</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 
-    <!-- 学生风采 (新增) -->
-    <section class="profile-section student-section" id="student-profiles" style="display: none;">
-        <div class="profile-container student-container">
-            <div class="profile-card student-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="王明" class="profile-photo student-photo">
-                <div class="profile-info student-info">
-                    <div class="profile-header student-header">
-                        <h3 class="profile-name student-name">王明</h3>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">专业：</span>
-                        <span class="detail-content">软件工程</span>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">年级：</span>
-                        <span class="detail-content">2020级本科生</span>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">荣誉：</span>
-                        <span class="detail-content">国家奖学金、ACM程序设计大赛金奖</span>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-card student-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="张雪" class="profile-photo student-photo">
-                <div class="profile-info student-info">
-                    <div class="profile-header student-header">
-                        <h3 class="profile-name student-name">张雪</h3>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">专业：</span>
-                        <span class="detail-content">数据科学与大数据技术</span>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">年级：</span>
-                        <span class="detail-content">2021级本科生</span>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">荣誉：</span>
-                        <span class="detail-content">校级三好学生、数学建模竞赛一等奖</span>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-card student-card">
-                <img src="/placeholder.svg?height=150&width=120" alt="李强" class="profile-photo student-photo">
-                <div class="profile-info student-info">
-                    <div class="profile-header student-header">
-                        <h3 class="profile-name student-name">李强</h3>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">专业：</span>
-                        <span class="detail-content">人工智能</span>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">年级：</span>
-                        <span class="detail-content">2019级研究生</span>
-                    </div>
-                    <div class="profile-detail student-detail">
-                        <span class="detail-label">荣誉：</span>
-                        <span class="detail-content">优秀学生干部、科技创新奖</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- 学院风采 -->
+    <!-- 学院风采 - 更新后的版本 -->
     <section class="campus-section">
         <div class="campus-title">
+            <img src="../images/hot.png" alt="" />
             <h2>学院风采</h2>
         </div>
         <div class="campus-gallery">
             <!-- 左侧大图 - 毕业照 -->
-            <div class="gallery-item">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                    alt="毕业典礼" loading="lazy">
+            <div class="gallery-item gallery-item-large">
+                <div class="image-wrapper">
+                    <img src="../images/photo/f5.jpg" alt="毕业典礼" class="gallery-image" loading="lazy">
+                    <div class="image-overlay">
+                        <span class="image-caption">毕业典礼</span>
+                    </div>
+                </div>
             </div>
 
             <!-- 中间大图 - 校园风光 -->
-            <div class="gallery-item">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                    alt="校园风光" loading="lazy">
+            <div class="gallery-item gallery-item-large">
+                <div class="image-wrapper">
+                    <img src="../images/photo/f2.jpg" alt="校园风光" class="gallery-image" loading="lazy">
+                    <div class="image-overlay">
+                        <span class="image-caption">校园风光</span>
+                    </div>
+                </div>
             </div>
-            <div class="nb">
-                <div class="nnb" style="display: flex; justify-content: space-between;">
+
+            <div class="gallery-column">
+                <div class="gallery-row">
                     <!-- 右上第一张 - 校园景色 -->
-                    <div class="gallery-item">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                            alt="校园景色" loading="lazy">
+                    <div class="gallery-item gallery-item-small">
+                        <div class="image-wrapper">
+                            <img src="../images/photo/f8.jpg" alt="校园景色" class="gallery-image" loading="lazy">
+                            <div class="image-overlay">
+                                <span class="image-caption">校园景色</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 右上第二张 - 学习场景 -->
-                    <div class="gallery-item">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                            alt="学习场景" loading="lazy">
+                    <div class="gallery-item gallery-item-small">
+                        <div class="image-wrapper">
+                            <img src="../images/photo/f3.jpg" alt="学习场景" class="gallery-image" loading="lazy">
+                            <div class="image-overlay">
+                                <span class="image-caption">学习场景</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- 右中第一张 - 学习讨论 -->
-                <div class="gallery-item">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                        alt="学习讨论" loading="lazy">
+                
+                <!-- 右中 - 学习讨论 -->
+                <div class="gallery-item gallery-item-medium">
+                    <div class="image-wrapper">
+                        <img src="../images/photo/f7.jpg" alt="学习讨论" class="gallery-image" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="image-caption">学习讨论</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="nnnb">
+            
+            <div class="gallery-column">
                 <!-- 右中第二张 - 课堂学习 -->
-                <div class="gallery-item">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                        alt="课堂学习" loading="lazy">
+                <div class="gallery-item gallery-item-medium">
+                    <div class="image-wrapper">
+                        <img src="../images/photo/f6.jpg" alt="课堂学习" class="gallery-image" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="image-caption">课堂学习</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 右下大图 - 师生合影 -->
-                <div class="gallery-item">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-pw8F58KwG8wdD7QFHxY41pxJywluWj.png"
-                        alt="师生合影" loading="lazy">
+                <div class="gallery-item gallery-item-medium">
+                    <div class="image-wrapper">
+                        <img src="../images/photo/f4.jpg" alt="师生合影" class="gallery-image" loading="lazy">
+                        <div class="image-overlay">
+                            <span class="image-caption">师生合影</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
 
     <!-- 页脚 -->
     <footer class="footer">
@@ -1537,8 +1525,21 @@
                 // 显示学生风采，隐藏教师风采
                 studentProfiles.style.display = 'block';
                 teacherProfiles.style.display = 'none';
+            });
+        });
 
-               
+        // 学院风采图片悬停效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            
+            galleryImages.forEach(image => {
+                image.addEventListener('mouseenter', function() {
+                    this.classList.add('hovered');
+                });
+                
+                image.addEventListener('mouseleave', function() {
+                    this.classList.remove('hovered');
+                });
             });
         });
     </script>
