@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>教师查询 - 数传技术学院</title>
+    <title>数传技术学院</title>
     <style>
         * {
             margin: 0;
@@ -101,6 +101,7 @@
             background-color: #006633;
             position: relative;
             z-index: 100;
+            /* 确保导航菜单在其他元素之上 */
         }
 
         .nav-menu {
@@ -130,13 +131,14 @@
             background-color: #005528;
         }
 
-        /* 下拉菜单样式 */
+        /* 下拉菜单样式 - 绿色背景和居中文字 */
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
             background-color: #007a3d;
+            /* 绿色背景 */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             opacity: 0;
             visibility: hidden;
@@ -157,6 +159,7 @@
 
         .dropdown-menu li {
             border-bottom: 1px solid #008c46;
+            /* 稍微浅一点的绿色边框 */
         }
 
         .dropdown-menu li:last-child {
@@ -167,15 +170,63 @@
             display: block;
             padding: 10px 15px;
             color: white;
+            /* 白色文字 */
             font-size: 14px;
             text-decoration: none;
             text-align: center;
+            /* 文字居中 */
             transition: background-color 0.2s;
         }
 
         .dropdown-menu a:hover {
             background-color: #005528;
+            /* 深绿色悬停背景 */
             color: white;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .nav-item {
+                text-align: left;
+            }
+
+            .nav-link {
+                padding: 10px 15px;
+                line-height: 1.5;
+            }
+
+            .dropdown-menu {
+                position: static;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                background-color: #008c46;
+                /* 移动端下拉菜单背景色 */
+                border-top: none;
+            }
+
+            .nav-item.has-dropdown.active .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                text-align: left;
+                /* 移动端保持左对齐，更符合移动端习惯 */
+                padding-left: 30px;
+            }
+
+            .dropdown-menu a:hover {
+                padding-left: 30px;
+                /* 保持一致的左边距，不再增加 */
+            }
         }
 
         /* 轮播图 */
@@ -261,22 +312,6 @@
             background-color: #006633;
         }
 
-        /* 教师查询标题 */
-        .search-title-container {
-            width: 260px;
-            
-            background-color: #006633;
-           
-
-        }
-
-        .search-title {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-        }
-
         /* 页脚 */
         .footer {
             background-color: #006633;
@@ -353,241 +388,184 @@
             color: white;
         }
 
-        /* 教师查询页面特定样式 */
-        .search-filters {
-            background-color: #fff;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-        }
+        /* 新闻咨询区域 */
+        /* Update the news section styles */
+/* 新闻咨询区域 */
+.news-section {
+    margin: 30px auto;
+    position: relative;
+    
+    
+}
 
-        .filter-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+.news-title-block {
+    position: absolute;
+    left: 0;
+    margin-top: -100px;
+    z-index: 2;
+    width: 180px;
+    height: 140px;
+    background-color: #006633;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .filter-label {
-            width: 80px;
-            text-align: right;
-            margin-right: 15px;
-            color: #666;
-        }
+.news-title-block h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
 
-        .filter-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.news-content-wrapper {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    min-height: 600px;
+}
 
-        .filter-select {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            min-width: 150px;
-            outline: none;
-            background-color: white;
-            cursor: pointer;
-        }
+.sidebar {
+    
+    width: 180px;
+    flex-shrink: 0;
+    background-color: #f8f8f8;
+}
 
-        .filter-select:focus {
-            border-color: #006633;
-        }
+.sidebar-menu {
+    list-style: none;
+    margin-top: 50px;
+    border-right: 1px solid #eee;
+    text-align: center;
+}
 
-        .filter-tabs {
-            display: flex;
-            border-bottom: 1px solid #eee;
-        }
+.sidebar-menu li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
 
-        .filter-tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            color: #666;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s;
-        }
+.sidebar-menu li:hover {
+    background-color: #f0f0f0;
+}
 
-        .filter-tab.active {
-            color: #006633;
-            border-bottom-color: #006633;
-            font-weight: bold;
-        }
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
 
-        .search-input-container {
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-        }
+.news-list {
+    position: relative;
+}
 
-        .search-input {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 300px;
-            outline: none;
-        }
+/* Update the news section styles - remove animations and add pagination */
+.news-item {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background: white;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .search-input:focus {
-            border-color: #006633;
-        }
+.news-image {
+    width: 160px;
+    height: 120px;
+    flex-shrink: 0;
+}
 
-        .search-btn {
-            background-color: #006633;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .search-btn:hover {
-            background-color: #005528;
-        }
+.news-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 
-        .reset-btn {
-            background-color: #f5f5f5;
-            color: #666;
-            border: 1px solid #ddd;
-            padding: 8px 20px;
-            border-radius: 4px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+.news-content h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #006633;
+}
 
-        .reset-btn:hover {
-            background-color: #eee;
-        }
+.news-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.6;
+}
 
-        .teacher-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 30px 0;
-        }
+.news-date {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+    margin-top: auto;
+}
 
-        .teacher-card {
-            background-color: #fff;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
+/* Update pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+}
 
-        .teacher-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+.pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-        .teacher-photo {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
+.pagination a.active {
+    background-color: #006633;
+    color: white;
+    border-color: #006633;
+}
 
-        .teacher-info {
-            padding: 15px;
-            text-align: center;
-        }
+.pagination a.next {
+    font-size: 18px;
+}
 
-        .teacher-name {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
+.pagination a:hover:not(.active) {
+    border-color: #006633;
+    color: #006633;
+}
 
-        .teacher-title {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
+.crumbs {
+    width: 100%;
+    height: 30px;
+    margin: 20px 0;
+    line-height: 30px;
+    background: #f5f5f5;
+    color: #999;
+    padding: 0 12px;
+    box-sizing: border-box;
+    font-size: 12px;
+    display: flex;
+}
 
-        .teacher-department {
-            font-size: 12px;
-            color: #999;
-        }
+.crumbs > div {
+    margin-left: 3px;
+}
 
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            .teacher-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .teacher-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-menu {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .nav-item {
-                text-align: left;
-            }
-
-            .nav-link {
-                padding: 10px 15px;
-                line-height: 1.5;
-            }
-
-            .dropdown-menu {
-                position: static;
-                display: none;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                width: 100%;
-                background-color: #008c46;
-                border-top: none;
-            }
-
-            .nav-item.has-dropdown.active .dropdown-menu {
-                display: block;
-            }
-
-            .dropdown-menu a {
-                text-align: left;
-                padding-left: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .teacher-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .filter-label {
-                width: 100%;
-                text-align: left;
-                margin-bottom: 5px;
-            }
-
-            .search-input {
-                width: 100%;
-            }
-
-            .search-input-container {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-
-            .search-btn, .reset-btn {
-                margin-left: 0;
-            }
-        }
+.crumbs > div a {
+    color: #999;
+}
     </style>
 </head>
 
@@ -605,7 +583,7 @@
         <div class="container">
             <div class="logo">
                 <img src="../images/logo.png" alt="数传技术学院logo">
-
+                <h1>数传技术学院</h1>
             </div>
             <div class="search-box">
                 <input type="text" placeholder="输入关键字搜索">
@@ -613,13 +591,13 @@
             </div>
         </div>
     </header>
-
+    
     <!-- 导航菜单 -->
     <nav class="nav">
         <div class="container">
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">首页</a>
+                    <a href="#" class="nav-link">首页</a>
                 </li>
                 <li class="nav-item has-dropdown">
                     <a href="#" class="nav-link">机构设置</a>
@@ -707,152 +685,87 @@
         </div>
     </div>
 
-    <!-- 教师查询标题 -->
-    <div class="search-title-container">
-        <div class="container">
-            <!-- <div class="search-title">教师查询</div> -->
+    <!-- 新闻咨询区域 -->
+    <!-- Update the news section in the HTML -->
+<div class="container">
+    <div class="news-section">
+        <div class="news-title-block">
+            <h2>新闻咨询</h2>
         </div>
-    </div>
+        <div class="news-content-wrapper">
+            <div class="sidebar">
+                <ul class="sidebar-menu">
+                    <li>学院动态</li>
+                    <li>院长信息</li>
+                    <li>学院新闻</li>
+                    <li>学院简报</li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="crumbs">
+                    <span>当前位置：</span>
+                    <div>
+                        <a href="./index.html">首页</a> <i class="current">新闻咨询</i>
+                    </div>
+                </div>
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="../images/about.jpg" alt="软件技术学院大楼">
+                        </div>
+                        <div class="news-content">
+                            <h3>软件技术学院软件学院能力打造 "第三课堂" 助力学生职业素养全面提升</h3>
+                            <p>为深入贯彻习近平总书记关于"加强人才培养"的重要指示精神，落实国家对高等职业教育提出的"培养更多高素质技术技能人才"的要求，"软件技术学院"以"第三课堂"为载体，助力学生职业素养全面提升。</p>
+                            <div class="news-date">2021-12-31</div>
+                        </div>
+                    </article>
 
-    <!-- 教师查询筛选区域 -->
-    <div class="search-filters">
-        <div class="container">
-            <div class="filter-row">
-                <div class="filter-label">院校:</div>
-                <div class="filter-options">
-                    <select class="filter-select">
-                        <option value="">全部院校</option>
-                        <option value="软件学院">软件学院</option>
-                        <option value="计算机学院">计算机学院</option>
-                        <option value="电子信息学院">电子信息学院</option>
-                        <option value="数学学院">数学学院</option>
-                    </select>
-                </div>
-            </div>
-            <div class="filter-row">
-                <div class="filter-label">专业:</div>
-                <div class="filter-options">
-                    <select class="filter-select">
-                        <option value="">全部专业</option>
-                        <option value="软件工程">软件工程</option>
-                        <option value="计算机科学与技术">计算机科学与技术</option>
-                        <option value="人工智能">人工智能</option>
-                        <option value="数据科学">数据科学</option>
-                        <option value="网络工程">网络工程</option>
-                    </select>
-                </div>
-            </div>
-            <div class="filter-tabs">
-                <div class="filter-tab active">全部</div>
-                <div class="filter-tab">教授</div>
-                <div class="filter-tab">副教授</div>
-                <div class="filter-tab">讲师</div>
-                <div class="filter-tab">助教</div>
-                <div class="filter-tab">研究员</div>
-                <div class="filter-tab">博士后</div>
-            </div>
-            <div class="search-input-container">
-                <input type="text" class="search-input" placeholder="输入教师姓名">
-                <button class="search-btn">搜索</button>
-                <button class="reset-btn">重置</button>
-            </div>
-        </div>
-    </div>
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="../images/news1.jpg" alt="学生活动">
+                        </div>
+                        <div class="news-content">
+                            <h3>信息技术学院软件学院（软件学院）西部数字化人才素质提升学习</h3>
+                            <p>为深入学习贯彻习近平总书记关于网络强国的重要思想，落实国家网络安全和信息化发展战略，大力培养数字化人才队伍，信息技术学院（软件学院）于12月31日下午，在行政楼举办了西部数字化人才素质提升学习。</p>
+                            <div class="news-date">2021-12-31</div>
+                        </div>
+                    </article>
 
-    <!-- 教师列表 -->
-    <div class="container">
-        <div class="teacher-grid">
-            <!-- 教师卡片 1 -->
-            <div class="teacher-card">
-                <img src="../images/t1.jpg" alt="张薇薇" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">张薇薇</div>
-                    <div class="teacher-title">博士 | 副教授</div>
-                    <div class="teacher-department">软件学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 2 -->
-            <div class="teacher-card">
-                <img src="../images//t2.jpg" alt="李丽莎" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">李丽莎</div>
-                    <div class="teacher-title">硕士 | 讲师</div>
-                    <div class="teacher-department">计算机学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 3 -->
-            <div class="teacher-card">
-                <img src="../images/t3.jpg" alt="刘民" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">刘民</div>
-                    <div class="teacher-title">博士 | 教授</div>
-                    <div class="teacher-department">物理学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 4 -->
-            <div class="teacher-card">
-                <img src="../images/t4.jpg" alt="冯婷婷" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">冯婷婷</div>
-                    <div class="teacher-title">硕士 | 讲师</div>
-                    <div class="teacher-department">软件学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 5 -->
-            <div class="teacher-card">
-                <img src="../images/t5.jpg" alt="赵三金" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">赵三金</div>
-                    <div class="teacher-title">博士 | 副教授</div>
-                    <div class="teacher-department">软件学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 6 -->
-            <div class="teacher-card">
-                <img src="../images/t1.jpg" alt="张薇薇" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">张薇薇</div>
-                    <div class="teacher-title">博士 | 副教授</div>
-                    <div class="teacher-department">软件学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 7 -->
-            <div class="teacher-card">
-                <img src="../images/t3.jpg" alt="李丽莎" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">李丽莎</div>
-                    <div class="teacher-title">硕士 | 讲师</div>
-                    <div class="teacher-department">计算机学院</div>
-                </div>
-            </div>
-            
-            <!-- 教师卡片 8 -->
-            <div class="teacher-card">
-                <img src="../images/t5.jpg" alt="刘民" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">刘民</div>
-                    <div class="teacher-title">博士 | 教授</div>
-                    <div class="teacher-department">物理学院</div>
-                </div>
-            </div>
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="../images/news2.jpg" alt="毕业典礼">
+                        </div>
+                        <div class="news-content">
+                            <h3>我院川川软件技术教师-学生实习2020-2021年度优工作先进集体</h3>
+                            <p>2021年12月31日，四川软件技术学院隆重举行了"2021年度工作先进个人"表彰大会，XX学院在2020-2021年度工作中表现突出，荣获"优秀工作先进集体"，学生工作中XX同学获得"优秀学生"称号。</p>
+                            <div class="news-date">2021-12-31</div>
+                        </div>
+                    </article>
 
-             <!-- 教师卡片 9 -->
-             <div class="teacher-card">
-                <img src="../images/t1.jpg" alt="刘民" class="teacher-photo">
-                <div class="teacher-info">
-                    <div class="teacher-name">刘民</div>
-                    <div class="teacher-title">博士 | 教授</div>
-                    <div class="teacher-department">物理学院</div>
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="../images/about.jpg" alt="软件技术学院大楼">
+                        </div>
+                        <div class="news-content">
+                            <h3>软件技术学院软件学院能力打造 "第三课堂" 助力学生职业素养全面提升</h3>
+                            <p>为深入贯彻习近平总书记关于"加强人才培养"的重要指示精神，落实国家对高等职业教育提出的"培养更多高素质技术技能人才"的要求，"软件技术学院"以"第三课堂"为载体，助力学生职业素养全面提升。</p>
+                            <div class="news-date">2021-12-31</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="pagination">
+                    <a href="#" class="next"><</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#" class="next">›</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
 
     <!-- 页脚 -->
     <footer class="footer">
@@ -893,9 +806,10 @@
         </div>
     </footer>
 
+    <!-- JavaScript 轮播图功能 -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 轮播图功能
+        document.addEventListener('DOMContentLoaded', function () {
+            // 获取轮播图元素
             const slides = document.querySelectorAll('.banner-slide');
             const dots = document.querySelectorAll('.dot');
             const prevBtn = document.getElementById('prev-slide');
@@ -931,11 +845,6 @@
 
             // 下一张幻灯片
             function nextSlide() {
-                showSlide(currentIndex + 1);
-            }
-
-            // 上一张幻灯片
-            function prevSlide()  {
                 showSlide(currentIndex + 1);
             }
 
@@ -987,81 +896,8 @@
             // 初始化：显示第一张幻灯片并开始自动轮播
             showSlide(0);
             startAutoSlide();
-            
-            // 获取所有筛选标签
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            
-            // 为每个标签添加点击事件
-            filterTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 移除所有标签的active类
-                    filterTabs.forEach(t => t.classList.remove('active'));
-                    // 为当前点击的标签添加active类
-                    this.classList.add('active');
-                    
-                    // 这里可以添加筛选逻辑
-                    const filterValue = this.textContent;
-                    console.log('筛选条件:', filterValue);
-                    
-                    // 模拟筛选效果（实际应用中可以根据筛选条件过滤教师卡片）
-                    // filterTeachers(filterValue);
-                });
-            });
-            
-            // 搜索按钮点击事件
-            const searchBtn = document.querySelector('.search-btn');
-            searchBtn.addEventListener('click', function() {
-                const searchValue = document.querySelector('.search-input').value.trim();
-                if (searchValue) {
-                    console.log('搜索关键词:', searchValue);
-                    // 执行搜索逻辑
-                    // searchTeachers(searchValue);
-                    alert('正在搜索: ' + searchValue);
-                } else {
-                    alert('请输入搜索关键词');
-                }
-            });
-            
-            // 重置按钮点击事件
-            const resetBtn = document.querySelector('.reset-btn');
-            resetBtn.addEventListener('click', function() {
-                // 清空搜索框
-                document.querySelector('.search-input').value = '';
-                
-                // 重置下拉选择框
-                document.querySelectorAll('.filter-select').forEach(select => {
-                    select.selectedIndex = 0;
-                });
-                
-                // 重置筛选标签
-                filterTabs.forEach(t => t.classList.remove('active'));
-                filterTabs[0].classList.add('active');
-                
-                // 重置教师列表显示
-                // resetTeacherDisplay();
-                
-                console.log('已重置所有筛选条件');
-            });
-            
-            // 更新当前日期和时间
-            function updateDateTime() {
-                const now = new Date();
-                const dateStr = now.getFullYear() + '-' + 
-                               (now.getMonth() + 1).toString().padStart(2, '0') + '-' + 
-                               now.getDate().toString().padStart(2, '0');
-                const timeStr = now.getHours().toString().padStart(2, '0') + ':' + 
-                               now.getMinutes().toString().padStart(2, '0') + ':' + 
-                               now.getSeconds().toString().padStart(2, '0');
-                document.querySelector('.date').textContent = '今天是: ' + dateStr + ' ' + timeStr;
-            }
-            
-            // 初始化时更新一次
-            updateDateTime();
-            
-            // 每秒更新一次时间
-            setInterval(updateDateTime, 1000);
         });
     </script>
 </body>
-   
+
 </html>
